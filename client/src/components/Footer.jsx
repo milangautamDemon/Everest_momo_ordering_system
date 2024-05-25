@@ -13,8 +13,8 @@ import Logo from './common/Logo';
 const Footer = () => {
   return (
 
-        <footer className="py-5 px-8 md:px-16 xl:px-32 bg-white-default flex  flex-col gap-1" >
-            <div className="flex flex-col xl:flex-row xl:justify-between">
+        <footer className="mt-6 pt-6 lg:pt-12 px-8 md:px-16 xl:px-32 bg-white-default flex border-t-2 border-white-light flex-col gap-1" >
+            <div className="flex flex-col xl:flex-row xl:justify-between lg:pb-10">
                 <div className="flex flex-col gap-6 lg:flex-row xl:w-4/5 xl:gap-32">
 
                     <div className="flex flex-col gap-1 lg:w-2/4">
@@ -28,9 +28,9 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
+                    <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-3'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">momos</h6>
-                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3 capitalize">
+                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-1 capitalize">
                             <NavLink to={"/aboutus"} className="text-sm text-secondary-light">about us</NavLink>
                             <NavLink to={"/menu"} className="text-sm text-secondary-light">our menu</NavLink>
                             <NavLink to={"/services"} className="text-sm text-secondary-light">our service</NavLink>
@@ -38,18 +38,18 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
+                    <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-3'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">legals</h6>
-                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3 capitalize">
+                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-1 capitalize">
                             <NavLink to={"/term"} className="text-sm text-secondary-light">term & conditions</NavLink>
                             <NavLink to={"/policy"} className="text-sm text-secondary-light">Privacy Policy</NavLink>
                             <NavLink to={"/support"} className="text-sm text-secondary-light">support</NavLink>
                         </div>
                     </div>     
                 </div>
-                <div className="flex flex-col gap-4 items-center py-6 border-t-2 mt-8 border-white-light xl:border-none xl:py-0 xl:mt-0">
+                <div className="flex flex-col gap-3 items-center py-6 border-t-2 mt-8 border-white-light xl:border-none xl:py-0 xl:mt-0">
                     <h6 className="text-lg md:text-xl capitalize font-bold text-secondary">follow us</h6>
-                    <div className="flex gap-3 xl:grid xl:grid-cols-3 xl:gap-6">
+                    <div className="flex gap-3 xl:grid xl:grid-cols-3 xl:gap-2">
                         <NavLink to={""} className="">
                             <CommonIcon iconName={FaFacebookF} />
                         </NavLink>
