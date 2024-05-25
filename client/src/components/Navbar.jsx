@@ -55,7 +55,7 @@ const Navbar = () => {
                 </ul>
             </div>
             
-            <div className="invisible lg:visible flex gap-8 justify-end items-center">
+            <div className="hidden lg:flex gap-8 justify-end items-center">
                 <div className="flex gap-4">
                    <CommonIcon iconName={FaFacebookF} />
                    <CommonIcon iconName={FaTiktok} />
