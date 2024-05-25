@@ -15,7 +15,7 @@ const Footer = () => {
 
         <footer className="py-5 px-8 md:px-16 xl:px-32 bg-white-default flex  flex-col gap-1" >
             <div className="flex flex-col xl:flex-row xl:justify-between">
-                <div className="flex flex-col gap-8 lg:flex-row xl:w-4/5 xl:gap-32">
+                <div className="flex flex-col gap-6 lg:flex-row xl:w-4/5 xl:gap-32">
 
                     <div className="flex flex-col gap-1 lg:w-2/4">
                         <div className="flex justify-center lg:justify-start">
@@ -30,21 +30,20 @@ const Footer = () => {
 
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">momos</h6>
-                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3">
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MD Bootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
+                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3 capitalize">
+                            <NavLink to={"/aboutus"} className="text-sm text-secondary-light">about us</NavLink>
+                            <NavLink to={"/menu"} className="text-sm text-secondary-light">our menu</NavLink>
+                            <NavLink to={"/services"} className="text-sm text-secondary-light">our service</NavLink>
+                            <NavLink to={"/contact"} className="text-sm text-secondary-light">contact us</NavLink>
                         </div>
                     </div>
 
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">legals</h6>
-                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3">
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
-                            <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
+                        <div className="flex gap-6 justify-center lg:flex-col lg:gap-3 capitalize">
+                            <NavLink to={"/term"} className="text-sm text-secondary-light">term & conditions</NavLink>
+                            <NavLink to={"/policy"} className="text-sm text-secondary-light">Privacy Policy</NavLink>
+                            <NavLink to={"/support"} className="text-sm text-secondary-light">support</NavLink>
                         </div>
                     </div>     
                 </div>
