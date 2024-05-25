@@ -7,7 +7,7 @@ const Logo = () => {
     <>
         <NavLink className="flex items-center gap-2" >
             <img src={headerLogo} alt="Logo" height={50} width={50} />
-            <div className="text-2xl font-bold text-secondary">momos</div>
+            <div className="text:xl md:text-2xl font-bold text-secondary">momos</div>
         </NavLink>
     </>
   )

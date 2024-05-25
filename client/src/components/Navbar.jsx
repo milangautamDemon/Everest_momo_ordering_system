@@ -16,7 +16,7 @@ const Navbar = () => {
     const handleToggle = () => setToggle(!toggle);
 
   return (
-   <nav className="py-2 px-8 md:px-16 xl:px-32 bg-white-default border-b-2 border-white-light border-solid">
+   <nav className="py-2 px-8 md:px-16 xl:px-32 bg-white-default border-b-2 border-white-light border-solid z-20">
         <div className="flex justify-between items-center relative">
             <div className="flex items-center">
                 <Logo />
@@ -62,7 +62,7 @@ const Navbar = () => {
                    <CommonIcon iconName={IoLogoInstagram } />
                 </div>
                 <div className="">
-                    <PrimaryButton buttonName="contact us" classFeature="" />
+                    <PrimaryButton buttonName="contact us" classFeature="bg-primary px-7"  />
                 </div>
             </div>
             <div className="hamburgar-menu lg:hidden" onClick={handleToggle}>

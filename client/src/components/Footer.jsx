@@ -29,7 +29,7 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
-                        <h6 className="text-xl capitalize font-bold text-secondary text-center">momos</h6>
+                        <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">momos</h6>
                         <div className="flex gap-6 justify-center lg:flex-col lg:gap-3">
                             <NavLink to={"/"} className="text-sm text-secondary-light">MD Bootstrap</NavLink>
                             <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
@@ -39,7 +39,7 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-4'>
-                        <h6 className="text-xl capitalize font-bold text-secondary text-center">legals</h6>
+                        <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">legals</h6>
                         <div className="flex gap-6 justify-center lg:flex-col lg:gap-3">
                             <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
                             <NavLink to={"/"} className="text-sm text-secondary-light">MDBootstrap</NavLink>
@@ -49,7 +49,7 @@ const Footer = () => {
                     </div>     
                 </div>
                 <div className="flex flex-col gap-4 items-center py-6 border-t-2 mt-8 border-white-light xl:border-none xl:py-0 xl:mt-0">
-                    <h6 className="text-xl capitalize font-bold text-secondary">follow us</h6>
+                    <h6 className="text-lg md:text-xl capitalize font-bold text-secondary">follow us</h6>
                     <div className="flex gap-3 xl:grid xl:grid-cols-3 xl:gap-6">
                         <NavLink to={""} className="">
                             <CommonIcon iconName={FaFacebookF} />
@@ -74,7 +74,7 @@ const Footer = () => {
             </div>
 
             
-            <div className="py-10 border-t-2 border-solid border-white-light text-black-light capitalize text-center" >
+            <div className="pt-6 md:py-10 border-t-2 border-solid border-white-light text-black-light capitalize text-center" >
                 copyright:  © 2023 everest momo pvt ltd. all right reserved 
             </div>
         </footer>

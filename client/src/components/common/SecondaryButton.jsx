@@ -3,9 +3,9 @@
     const Icon = buttonIcon;
     return (
       <>
-          <button onClick={handleButton} type="button" className={`flex px-8 py-3 rounded-full gap-2 items-center capitalize text-lg font-light text-white-default ${classFeature}`} data-bs-toggle="button">
-              <div className="icon">
-                <Icon size={25} />
+          <button onClick={handleButton} type="button" className={`flex px-8 py-3 rounded-full gap-1 items-center font-light text-white-default capitalize text-sm lg:gap-2 lg:text-lg ${classFeature}`} data-bs-toggle="button">
+              <div className="icon text-lg lg:text-xl">
+                <Icon />
               </div>
               <div className="">{buttonName}</div>
           </button>
