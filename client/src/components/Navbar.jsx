@@ -26,28 +26,28 @@ const Navbar = () => {
                 <ul className="w-full flex flex-col justify-center items-center gap-4 bg-black-dark py-6 text-black-light lg:text-secondary-light lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
                     <li className="">
                         <NavLink
-                        to="/" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
+                        to="/aboutus" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
                         >
                         about us
                         </NavLink>
                     </li>
                     <li className="">
                     <NavLink
-                        to="/" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
+                        to="/menu" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
                         >
                         our menu
                         </NavLink>
                     </li>
                     <li className="">
                     <NavLink
-                        to="/" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
+                        to="/service" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
                         >
                         our services
                         </NavLink>
                     </li>
                     <li className="">
                     <NavLink
-                        to="/" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
+                        to="/advice" className="text-lg font-bold capitalize lg:text-sm lg:font-semibold xl:text-lg xl:font-light"
                         >
                         allergy advice
                         </NavLink>
