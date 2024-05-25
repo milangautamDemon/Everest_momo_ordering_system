@@ -75,7 +75,7 @@ const Home = () => {
                         </div>
 
                         <div className="flex flex-col gap-4 md:items-start md:justify-center">
-                            <div className="text:xl md:text-2xl text-black-dark font-bold capitalize text-center md:text-start">
+                            <div className="text-xl md:text-2xl text-black-dark font-bold capitalize text-center md:text-start">
                                 why customers <span className='text-primary'>love us</span>
                             </div>
                             <div className="text-sm text-center md:text-start md:text-lg text-black">
@@ -91,7 +91,7 @@ const Home = () => {
                 <div className="my-4 flex flex-col md:gap-4">
                     <div className="flex flex-col">
                         <div className="flex flex-col items-center gap-4 my-4">
-                            <div className="text:xl md:text-2xl font-bold text-black-dark capitalize">our <span className='text-primary'>most popular</span> Recipes</div>
+                            <div className="text-xl md:text-2xl font-bold text-black-dark capitalize">our <span className='text-primary'>most popular</span> Recipes</div>
                             <div className="text-sm text-center md:text-lg text-black">Browse through a Varieties of recipes with fresh ingredient selected only from the best place </div>
                         </div>
                         <div className="py-4 flex gap-6 justify-center items-center my-6">
@@ -113,7 +113,7 @@ const Home = () => {
             </div>
 
             <div className="my-10">
-                <div className="text:xl md:text-2xl font-bold capitalize text-center pb-8">
+                <div className="text-xl md:text-2xl font-bold capitalize text-center pb-8">
                     <span className='text-primary'>we offer people</span> the service they want
                 </div>
 
@@ -124,7 +124,7 @@ const Home = () => {
 
                     <div className="absolute top-0 h-full w-full flex flex-col justify-end items-center py-6 bg-gradient-to-b from-black/15 to-black-dark/60">
                         <div className="flex flex-col items-center peer">
-                            <div className="text:xl md:text-2xl font-bold capitalize text-white-default">Process behind the making</div>
+                            <div className="text-xl md:text-2xl font-bold capitalize text-white-default">Process behind the making</div>
                             <div className="text-sm font-normal text-white-default">See how only chefs cooks only the best momos</div>
                             <div className="my-4">
                                 <SecondaryButton buttonName="explore food menu" buttonIcon={MdSlowMotionVideo} classFeature="bg-secondary hover:bg-secondary-dark" />
@@ -156,7 +156,7 @@ const Home = () => {
             <div className="flex flex-col-reverse items-center gap-4 mx-8 md:mx-16 xl:mx-32 md:flex-row md:justify-between">
                 <div className="flex flex-col gap-2 items-center md:w-3/5 md:items-start">
                     <div className="flex flex-col gap-4">
-                        <div className="text:xl md:text-2xl font-bold capitalize text-center md:text-start">
+                        <div className="text-xl md:text-2xl font-bold capitalize text-center md:text-start">
                             200+ <span className='text-primary'>happy customer</span>
                         </div>
                         <div className="text-sm font-bold text-secondary text-center md:text-start">
@@ -184,7 +184,7 @@ const Home = () => {
             {/*get in touch user input form*/}
             <div className="flex flex-col gap-4 my-8 py-6 mx-8 md:mx-16 xl:mx-32 rounded-lg">
                 <div className="flex flex-col items-center gap-2">
-                    <div className="text:xl md:text-2xl font-bold capitalize">
+                    <div className="text-xl md:text-2xl font-bold capitalize">
                         get <span className="text-primary">in touch</span>
                     </div>
                     <div className="text-sm md:text-lg font-semibold text-secondary capitalize">Our team would love to hear from you</div>

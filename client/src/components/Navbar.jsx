@@ -16,13 +16,13 @@ const Navbar = () => {
     const handleToggle = () => setToggle(!toggle);
 
   return (
-   <nav className="py-2 px-8 md:px-16 xl:px-32 bg-white-default border-b-2 border-white-light border-solid z-20">
+   <nav className="py-2 px-8 md:px-16 xl:px-32 relative bg-white-default border-b-2 border-white-light border-solid z-50">
         <div className="flex justify-between items-center relative">
             <div className="flex items-center">
                 <Logo />
             </div>
 
-            <div className={`absolute top-16 w-full lg:relative lg:top-0 lg:w-auto lg:flex lg:items-center ${toggle? 'hidden' : 'block'}`}>
+            <div className={`absolute top-14 w-full lg:relative lg:top-0 lg:w-auto lg:flex lg:items-center ${toggle? 'hidden' : 'block'}`}>
                 <ul className="w-full flex flex-col justify-center items-center gap-4 bg-black-dark py-6 text-black-light lg:text-secondary-light lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
                     <li className="">
                         <NavLink
