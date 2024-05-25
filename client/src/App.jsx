@@ -32,7 +32,7 @@ function App() {
           element: <Menu />
         },
         {
-          path: '/contactus',
+          path: '/contact',
           element: <ContactUs />
         },
         {
