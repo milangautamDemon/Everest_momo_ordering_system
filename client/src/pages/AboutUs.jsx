@@ -30,6 +30,8 @@ const AboutUs = () => {
             pageParaSecondary="passed down through generations"
             pagePrimaryImg={womenChefPrimary}
             pageSecondaryImg={womenChefSecondary}
+            classFeature="text-start"
+          flexFeature="justify-between"
         />
 
         <ExploreProcess 

@@ -134,19 +134,22 @@ const Home = () => {
                             serviceIcon={GiOpenedFoodCan} 
                             serviceTitle="quality food" 
                             servicePara="Only the best food with top quality products and ingredients" 
-                            classFeature="items-center" 
+                            classFeature="items-center"
+                            paraClassTextFeature="text-center" 
                         />
                         <HotelService 
                             serviceIcon={GiPartyPopper} 
                             serviceTitle="private party" 
                             servicePara="Only the best food with top quality products and ingredients" 
-                            classFeature="items-center" 
+                            classFeature="items-center"
+                            paraClassTextFeature="text-center" 
                         />
                         <HotelService 
                         serviceIcon={SiCodechef} 
                         serviceTitle="categring" 
                         servicePara="Only the best food with top quality products and ingredients" 
-                        classFeature="items-center" 
+                        classFeature="items-center"
+                        paraClassTextFeature="text-center" 
                         />
                     </div>
                     

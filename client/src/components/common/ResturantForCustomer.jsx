@@ -1,26 +1,26 @@
 /* eslint-disable react/prop-types */
 
 import customerLunchImg from "../../assets/images/group-lunch.jpeg"
-import HotelService from "./HotelService"
-import { GiOpenedFoodCan } from "react-icons/gi";
 import qrScanner from "../../assets/images/scan-me.png"
+import HotelService from "./HotelService"
 
 
-const ResturantForCustomer = ({classFeature}) => {
+const ResturantForCustomer = ({feature, icon, title, para }) => {
   return (
 
-    <div className={`px-8 md:px-16 xl:px-32 w-full flex flex-col gap-8 md:gap-12 md:${classFeature} md:justify-between md:items-start`}>
+    <div className={`px-8 my-8 py-4 md:px-16 xl:px-32 w-full flex flex-col gap-8 md:gap-12 md:${feature} md:justify-between md:items-start`}>
 
         <div className="flex flex-col gap-4 items-center w-full md:items-start md:w-1/2">
             <HotelService 
-                serviceIcon={GiOpenedFoodCan} 
-                serviceTitle="quality food" 
-                servicePara="Only the best food with top quality products and ingredients" 
-                classFeature="items-center md:items-start" 
+                serviceIcon={icon} 
+                serviceTitle={title} 
+                servicePara={para} 
+                classFeature="items-center md:items-start"
+                paraClassTextFeature="text-start" 
             />
 
             <div className="flex items-center gap-12 md:justify-between p-4 shadow-md rounded-md">
-                <div className="">
+                <div className="flex flex-col gap-1">
                     <div className="text-secondary font-semibold">
                         Scan the QR code
                     </div>

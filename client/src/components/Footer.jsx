@@ -21,7 +21,7 @@ const Footer = () => {
                         <div className="flex justify-center lg:justify-start">
                             <Logo />
                         </div>
-                        <p className='text-center lg:text-start text-black-light'>
+                        <p className='text-center lg:text-start font-normal text-sm text-black-light'>
                         Here you can use rows and columns to organize your footer
                         content. Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit.
@@ -31,19 +31,19 @@ const Footer = () => {
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-3'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">momos</h6>
                         <div className="flex gap-6 justify-center lg:flex-col lg:gap-1 capitalize">
-                            <NavLink to={"/aboutus"} className="text-sm text-secondary-light">about us</NavLink>
-                            <NavLink to={"/menu"} className="text-sm text-secondary-light">our menu</NavLink>
-                            <NavLink to={"/services"} className="text-sm text-secondary-light">our service</NavLink>
-                            <NavLink to={"/contact"} className="text-sm text-secondary-light">contact us</NavLink>
+                            <NavLink to={"/aboutus"} className="text-sm text-secondary">about us</NavLink>
+                            <NavLink to={"/menu"} className="text-sm text-secondary">our menu</NavLink>
+                            <NavLink to={"/services"} className="text-sm text-secondary">our service</NavLink>
+                            <NavLink to={"/contact"} className="text-sm text-secondary">contact us</NavLink>
                         </div>
                     </div>
 
                     <div className='flex flex-col gap-1 lg:w-1/4 lg:items-start lg:gap-3'>
                         <h6 className="text-lg md:text-xl capitalize font-bold text-secondary text-center">legals</h6>
                         <div className="flex gap-6 justify-center lg:flex-col lg:gap-1 capitalize">
-                            <NavLink to={"/term"} className="text-sm text-secondary-light">term & conditions</NavLink>
-                            <NavLink to={"/policy"} className="text-sm text-secondary-light">Privacy Policy</NavLink>
-                            <NavLink to={"/support"} className="text-sm text-secondary-light">support</NavLink>
+                            <NavLink to={"/term"} className="text-sm text-secondary">term & conditions</NavLink>
+                            <NavLink to={"/policy"} className="text-sm text-secondary">Privacy Policy</NavLink>
+                            <NavLink to={"/support"} className="text-sm text-secondary">support</NavLink>
                         </div>
                     </div>     
                 </div>
