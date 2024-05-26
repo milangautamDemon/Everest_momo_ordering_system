@@ -24,11 +24,11 @@ const AboutUs = () => {
         <div className=" px-8 md:px-16 xl:px-32">
           <div className='my-6 md:py-8 flex justify-between items-center'>                
               <div className="flex flex-col gap-4 md:w-1/2">
-                <div className="font-allura text-secondary capitalize italic text-2xl font-light">
+                <div className="font-allura text-4xl font-medium text-secondary-light capitalize italic">
                   about us
                 </div>
-                <div className="text-black-light font-nova uppercase">we pride ourself on</div>
-                <div className="text:lg lg:text-2xl font-nova font-bold text-start flex flex-col">
+                <div className="text-black-light font-nova lg:font-oswald uppercase">we pride ourself on</div>
+                <div className="text:lg lg:text-2xl font-nova lg:font-oswald font-bold lg:font-semibold text-start flex flex-col">
                     <span className=" text-primary">Our authentic momo recipes</span>  
                     <span className="text-black-dark">passed down through generations</span>
                 </div>
