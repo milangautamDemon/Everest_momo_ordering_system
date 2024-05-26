@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
-const HotelService = ({serviceIcon, serviceTitle, servicePara}) => {
+const HotelService = ({serviceIcon, serviceTitle, servicePara, classFeature}) => {
   const Icon = serviceIcon;
   return (
-      <div className="category-card flex flex-col items-center gap-2 py-4">
-        <div className="text-primary-light"><Icon size={70} /></div>
-        <h5 className="text:xl md:text-2xl font-bold text-black-dark">{serviceTitle}</h5>
-        <p className="text-sm font-normal text-black-dark text-center">{servicePara}</p>
+      <div className={`category-card flex flex-col gap-4 ${classFeature}`}>
+        <div className={`flex flex-col gap-2 justify-center ${classFeature}`}>
+            <Icon size={70} className="text-primary-light" />
+            <div className="text:xl capitalize font-bold text-black-dark">
+              {serviceTitle}
+            </div>
+        </div>
+       
+        <div className="text-sm font-normal text-black-dark text-center">{servicePara}</div>
       </div>
   )
 }

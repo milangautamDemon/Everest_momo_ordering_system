@@ -13,7 +13,6 @@ import HotelService from '../components/common/HotelService';
 import { GiPartyPopper } from "react-icons/gi";
 import { GiOpenedFoodCan } from "react-icons/gi";
 import { SiCodechef } from "react-icons/si";
-import { MdSlowMotionVideo } from "react-icons/md";
 import serviceImg from "../assets/images/service-img.jpeg";
 import customerImg from "../assets/images/customerImg.jpeg";
 import { FaArrowLeft } from "react-icons/fa";
@@ -30,6 +29,7 @@ import momoitems from "../assets/images/momos-items.png"
 import { Map } from "../components/Map";
 import { mapContext } from "../context/mapContext";
 import UserInputForm from "../components/common/UserInputForm";
+import ExploreProcess from "../components/common/ExploreProcess";
 
 
 const Home = () => {
@@ -119,35 +119,37 @@ const Home = () => {
                     <span className='text-primary'>we offer people</span> the service they want
                 </div>
 
-                <div className="w-full md:h-96 xl:h-[30rem] relative">
-                    <div className="w-full h-full">
-                        <img src={serviceImg} className='w-full h-full' alt="food service" />
-                    </div>
+                <ExploreProcess 
+                    exploreIcon={SecondaryButton}
+                    exploreImg={serviceImg}
+                    exploreTitle="Process behind the making"
+                    explorePara="See how only chefs cooks only the best momos"
+                    btnName="explore food menu"
+                    classFeature="items-center"
+                />
 
-                    <div className="absolute top-0 h-full w-full flex flex-col justify-end items-center py-6 bg-gradient-to-b from-black/15 to-black-dark/60">
-                        <div className="flex flex-col items-center peer">
-                            <div className="text-xl md:text-2xl font-bold capitalize text-white-default">Process behind the making</div>
-                            <div className="text-sm font-normal text-white-default">See how only chefs cooks only the best momos</div>
-                            <div className="my-4">
-                                <SecondaryButton buttonName="explore food menu" buttonIcon={MdSlowMotionVideo} classFeature="bg-secondary hover:bg-secondary-dark" />
-                            </div>
-                        </div>
-                        <div className="flex flex-col invisible items-center my-8 peer-active:visible">
-                            <div className="border-t-2 border-dotted w-80 border-blue-light"></div>
-                            <div className="cross -translate-y-0.5">
-                                <div className="border-t-2 border-dotted w-12 border-blue-light -rotate-45"></div>
-                                <div className="border-t-2 border-dotted w-12 border-blue-light rotate-45"></div>
-                            </div>
-                        </div>
+                <div className="flex flex-col gap-4 my-12 mx-8 md:mx-16 xl:mx-32 ">
+                    <div className="flex flex-col gap-10 my-4 lg:flex-row items-center md:flex-row">
+                        <HotelService 
+                            serviceIcon={GiOpenedFoodCan} 
+                            serviceTitle="quality food" 
+                            servicePara="Only the best food with top quality products and ingredients" 
+                            classFeature="items-center" 
+                        />
+                        <HotelService 
+                            serviceIcon={GiPartyPopper} 
+                            serviceTitle="private party" 
+                            servicePara="Only the best food with top quality products and ingredients" 
+                            classFeature="items-center" 
+                        />
+                        <HotelService 
+                        serviceIcon={SiCodechef} 
+                        serviceTitle="categring" 
+                        servicePara="Only the best food with top quality products and ingredients" 
+                        classFeature="items-center" 
+                        />
                     </div>
-                </div>
-
-                <div className="flex flex-col gap-4 my-8 mx-8 md:mx-16 xl:mx-32 ">
-                    <div className="flex flex-col lg:flex-row lg:gap-10 items-center md:flex-row md:gap-6">
-                        <HotelService serviceIcon={GiOpenedFoodCan} serviceTitle="quality food" servicePara="Only the best food with top quality products and ingredients" />
-                        <HotelService serviceIcon={GiPartyPopper} serviceTitle="private party" servicePara="Only the best food with top quality products and ingredients" />
-                        <HotelService serviceIcon={SiCodechef} serviceTitle="categring" servicePara="Only the best food with top quality products and ingredients" />
-                    </div>
+                    
                     <div className="flex justify-center my-6">
                         <SecondaryButton buttonName="explore food menu" buttonIcon={TiArrowRight} classFeature="bg-secondary flex-row-reverse hover:bg-secondary-dark" />
                     </div>

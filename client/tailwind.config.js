@@ -5,13 +5,6 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  purge: {
-    enabled: true,
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-  },
   theme: {
     colors: {
       // tailwind custom variable

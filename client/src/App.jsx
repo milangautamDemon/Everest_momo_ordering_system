@@ -5,7 +5,7 @@ import Layout from './components/layout/Layout';
 import Advice from './pages/Advice';
 import Menu from './pages/Menu';
 import ContactUs from './pages/ContactUs';
-import Service from './pages/Service';
+import Services from './pages/Services';
 
 
 function App() {
@@ -36,8 +36,8 @@ function App() {
           element: <ContactUs />
         },
         {
-          path: '/service',
-          element: <Service />
+          path: '/services',
+          element: <Services />
         }
       ]
     }

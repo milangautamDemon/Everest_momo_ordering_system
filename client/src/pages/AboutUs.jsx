@@ -1,7 +1,6 @@
-import womenChef from "../assets/images/chief.png"
-import women from "../assets/images/women.png"
+import womenChefPrimary from "../assets/images/page-women-chef-primary.png"
+import womenChefSecondary from "../assets/images/page-women-chef-secondary.png"
 import SecondaryButton from "../components/common/SecondaryButton"
-import { MdSlowMotionVideo } from "react-icons/md";
 import cookingImg from "../assets/images/cooking-img.jpeg"
 import ChiefService from "../components/common/ChiefService";
 import momoImg1 from "../assets/images/sea-momo.png"
@@ -14,6 +13,8 @@ import Staff from "../components/common/Staff";
 import headChef from "../assets/images/headChef.jpeg"
 import assistantChef from "../assets/images/chef2.jpeg"
 import assistantChef2 from "../assets/images/chef3.jpeg"
+import ExploreProcess from "../components/common/ExploreProcess";
+import PageDescription from "../components/common/PageDescription";
 
 
 
@@ -21,41 +22,24 @@ import assistantChef2 from "../assets/images/chef3.jpeg"
 const AboutUs = () => {
   return (
     <div className="pb-10 font-poppins">
-        <div className=" px-8 md:px-16 xl:px-32">
-          <div className='my-6 md:py-8 flex justify-between items-center'>                
-              <div className="flex flex-col gap-4 md:w-1/2">
-                <div className="font-allura text-4xl font-medium text-secondary-light capitalize italic">
-                  about us
-                </div>
-                <div className="text-black-light font-nova lg:font-oswald uppercase">we pride ourself on</div>
-                <div className="text:lg lg:text-2xl font-nova lg:font-oswald font-bold lg:font-semibold text-start flex flex-col">
-                    <span className=" text-primary">Our authentic momo recipes</span>  
-                    <span className="text-black-dark">passed down through generations</span>
-                </div>
-              </div>
 
-              <div className="md:w-1/2 md:flex md:justify-end">
-                  <img src={womenChef} alt="women-Chief" className='w-20 h-32 sm:w-32 sm:h-40 md:hidden' />
-                  <img src={women} alt="women-Chief" className='hidden md:block h-64 w-64 xl:h-80 xl:w-80' />
-              </div>
-          </div>
-        </div>
+        <PageDescription 
+            pageTitle="about us"
+            pageQuote="we pride ourself on"
+            pageParaPrimary="Our authentic momo recipes"
+            pageParaSecondary="passed down through generations"
+            pagePrimaryImg={womenChefPrimary}
+            pageSecondaryImg={womenChefSecondary}
+        />
 
-        <div className="w-full h-60 md:h-96 xl:h-[30rem] relative">
-            <div className="w-full h-full">
-                <img src={cookingImg} className='w-full h-full object-cover' alt="food service" />
-            </div>
-
-            <div className="absolute bottom-0 h-full w-full flex flex-col justify-end items-center md:items-start md:pl-6 py-6 bg-gradient-to-b from-black/15 to-black-dark/60">
-                <div className="flex flex-col items-center md:items-start">
-                    <div className="text-lg md:text-2xl font-bold capitalize text-white-default">Process behind the making</div>
-                    <div className="text-sm font-normal text-white-default">See how only chefs cooks only the best momos</div>
-                    <div className="my-4 flex md:justify-start">
-                        <SecondaryButton buttonName="explore food menu" buttonIcon={MdSlowMotionVideo} classFeature="bg-secondary hover:bg-secondary-dark" />
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ExploreProcess 
+          exploreIcon={SecondaryButton}
+          exploreImg={cookingImg}
+          exploreTitle="Process behind the making"
+          explorePara="See how only chefs cooks only the best momos"
+          btnName="explore food menu"
+          classFeature="items-start"
+        />
         
         <div className="flex flex-col pt-16 mt-8">
           <ChiefService 
