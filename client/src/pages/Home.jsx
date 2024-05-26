@@ -29,10 +29,17 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import { FaClock } from "react-icons/fa";
 import momoitems from "../assets/images/momos-items.png"
+import { Map } from "../components/Map";
+
 
 const Home = () => {
 
     const [phone, setPhone] = useState('');
+    const [currentMarkerPosition, setCurrentMarkerPosition] = useState({
+        lat:51.505 ,
+        lng:-0.09
+    });
+
 
     return (
         <div className="font-poppins py-4 overflow-hidden">
@@ -179,7 +186,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
 
             {/*get in touch user input form*/}
             <div className="flex flex-col gap-4 my-8 py-6 mx-8 md:mx-16 xl:mx-32 rounded-lg">
@@ -341,6 +347,11 @@ const Home = () => {
                         </form>
                     </div>
                 </div>
+            </div>
+
+            {/*map*/}
+            <div className="w-full h-60 md:h-80 lg:h-96 mt-12">
+                <Map currentMarkerPosition={currentMarkerPosition} setCurrentMarkerPosition={setCurrentMarkerPosition} />
             </div>
 
         </div>

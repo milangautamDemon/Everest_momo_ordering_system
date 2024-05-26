@@ -13,7 +13,7 @@ import Logo from './common/Logo';
 const Footer = () => {
   return (
 
-        <footer className="mt-6 pt-6 lg:pt-12 px-8 md:px-16 xl:px-32 bg-white-default flex border-t-2 border-white-light flex-col gap-1" >
+        <footer className="mt-6 pt-6 lg:pt-12 px-8 md:px-16 xl:px-32 bg-white-default flex flex-col gap-1" >
             <div className="flex flex-col xl:flex-row xl:justify-between lg:pb-10">
                 <div className="flex flex-col gap-6 lg:flex-row xl:w-4/5 xl:gap-32">
 
