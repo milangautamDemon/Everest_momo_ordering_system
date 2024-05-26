@@ -36,7 +36,7 @@ export default {
         dark: 'rgb(220 38 38)',
       },
       "white": {
-        light : '#F5EFE6',
+        light : '#FAFBFB',
         default : '#ffffff',
       },
       "blue": {
@@ -51,7 +51,8 @@ export default {
       allura: ["Allura", "cursive", "sans-serif"],
       nova: ["Nova Mono", "monospace", "sans-serif"],
       hachi: ["Hachi Maru Pop", "cursive", "sans-serif"],
-      oswald: ["Oswald", "sans-serif"]
+      oswald: ["Oswald", "sans-serif"],
+      varel: ["Varela", "sans-serif"]
     },
     extend: {},
   },

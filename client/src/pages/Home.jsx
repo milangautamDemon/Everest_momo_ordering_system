@@ -18,10 +18,8 @@ import serviceImg from "../assets/images/service-img.jpeg";
 import customerImg from "../assets/images/customerImg.jpeg";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
-import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import { useState } from "react";
-import PrimaryButton from "../components/common/PrimaryButton";
+import { useContext } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoTiktok } from "react-icons/io5";
@@ -30,16 +28,13 @@ import { FaPhone } from "react-icons/fa6";
 import { FaClock } from "react-icons/fa";
 import momoitems from "../assets/images/momos-items.png"
 import { Map } from "../components/Map";
+import { mapContext } from "../context/mapContext";
+import UserInputForm from "../components/common/UserInputForm";
 
 
 const Home = () => {
 
-    const [phone, setPhone] = useState('');
-    const [currentMarkerPosition, setCurrentMarkerPosition] = useState({
-        lat:51.505 ,
-        lng:-0.09
-    });
-
+    const {currentMarkerPosition, setCurrentMarkerPosition} = useContext(mapContext);
 
     return (
         <div className="font-poppins py-4 overflow-hidden">
@@ -257,95 +252,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="customer-form px-4 md:w-1/2">
-                        <form action="#" className="flex flex-col gap-4">
-                            <div className="flex flex-row">
-                                <div className="w-1/2 pr-2 ">
-                                    <label htmlFor="firstName"
-                                        className="block my-2 text-left  
-                                                text-sm font-medium text-black-dark">
-                                        First Name
-                                    </label>
-                                    <input type="text"
-                                        className="shadow-sm text-black-dark border outline-none border-black-light 
-                                                text-sm rounded-lg block w-full p-2.5"
-                                        placeholder="Enter First Name"
-                                        required />
-                                </div>
-                                <div className="w-1/2 pl-2">
-                                    <label htmlFor="firstName"
-                                        className="block my-2 text-left text-sm  
-                                                font-medium text-black-dark">
-                                        Last Name
-                                    </label>
-                                    <input type="text"
-                                        className="shadow-sm text-black-dark border outline-none border-black-light 
-                                                text-sm rounded-lg block w-full p-2.5"
-                                        placeholder="Enter Last Name" />
-                                </div>
-                            </div>
-                            <div>
-                                <label htmlFor="email"
-                                    className="block my-2 text-left text-sm  
-                                            font-medium text-black-dark capitalize">
-                                    email
-                                </label>
-                                <input type="email"
-                                    className="shadow-sm text-black-dark border outline-none border-black-light 
-                                            text-sm rounded-lg block w-full p-2.5"
-                                    placeholder="abc@geeksforgeeks.org"
-                                    required />
-                            </div>
-                            <div>
-                                <label htmlFor="helps"
-                                    className="block my-2 text-left  
-                                            text-sm font-medium text-black-dark">
-                                    What can we do for you
-                                </label>
-                                <select name="helps" id="helps"
-                                    className="block p-2.5 w-full text-sm  
-                                             rounded-lg  
-                                            border border-black-light shadow-sm "
-                                    required >
-                                        <option value="" className="text-black-light">Choose</option>
-                                        <option value="momo">About momo</option>
-                                        <option value="contact">Our contact</option>
-                                        <option value="price">Price</option>
-                                    </select>
-                            </div>
-                            <div>
-                                <label htmlFor="phone" className="block my-2 text-left  
-                                            text-sm font-medium text-black-dark">
-                                    Phone No
-                                </label>
-                                <PhoneInput
-                                inputStyle={{
-                                    width: "100%",
-                                    height: "44px"
-                                }}
-                                    country={'np'}
-                                    value={phone}
-                                    onChange={(phone) => setPhone(phone)}
-                                />
-                            </div>
-                            <div >
-                                <label htmlFor="message"
-                                    className="block my-2 text-left  
-                                            text-sm font-medium text-black-dark ">
-                                    Your message
-                                </label>
-                                <textarea rows="4"
-                                    className="block p-2.5 w-full outline-none text-sm  
-                                                text-black-dark rounded-lg  
-                                                shadow-sm border border-black-light "
-                                    placeholder="Query/Suggestion..." />
-                            </div>
-
-                            <div className="btn">
-                                <PrimaryButton buttonName="send message" classFeature="bg-primary px-10"  />
-                            </div>
-                        </form>
-                    </div>
+                    <UserInputForm btnColor="bg-primary"/>
                 </div>
             </div>
 

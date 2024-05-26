@@ -23,7 +23,7 @@ const Navbar = () => {
             </div>
 
             <div className={`absolute top-14 w-full lg:relative lg:top-0 lg:w-auto lg:flex lg:items-center ${toggle? 'hidden' : 'block'}`}>
-                <ul className="font-hachi lg:font-poppins w-full flex flex-col justify-center items-center gap-4 bg-black-dark py-6 text-black-light lg:text-secondary-light lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
+                <ul className="font-hachi lg:font-poppins w-full flex flex-col justify-center items-center gap-2 bg-black-dark py-6 text-black-light lg:text-secondary-light lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
                     <li className="">
                         <NavLink
                         to="/aboutus" className="text-lg font-bold capitalize lg:text-sm lg:font-light"
