@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const Navbar = () => {
 
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
 
     const handleToggle = () => setToggle(!toggle);
 
