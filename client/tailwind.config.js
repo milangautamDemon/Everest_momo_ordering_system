@@ -5,6 +5,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  purge: {
+    enabled: true,
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+  },
   theme: {
     colors: {
       // tailwind custom variable
@@ -37,7 +44,14 @@ export default {
         DEFAULT: '#23376C6',
         dark: '#0504AA',
       }
-
+    },
+    
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      allura: ["Allura", "cursive", "sans-serif"],
+      nova: ["Nova Mono", "monospace", "sans-serif"],
+      hachi: ["Hachi Maru Pop", "cursive", "sans-serif"],
+      oswald: ["Oswald", "sans-serif"]
     },
     extend: {},
   },

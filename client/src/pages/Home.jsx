@@ -35,7 +35,7 @@ const Home = () => {
     const [phone, setPhone] = useState('');
 
     return (
-        <div className="py-4 overflow-hidden">
+        <div className="font-poppins py-4 overflow-hidden">
             <div className=" px-8 md:px-16 xl:px-32">
                 <div className='flex flex-col-reverse items-center gap-2 my-6 md:flex-row mg:justify-between lg:relative'>
                     <div className="flex flex-col md:items-start">
@@ -46,7 +46,7 @@ const Home = () => {
                             <div className="w-40 sm:w-56 lg:w-64">
                                 <img src={theOne} alt="The One" />
                             </div>
-                            <div className="md:text-sm lg:text-lg font-semibold py-4">
+                            <div className="text-black-dark md:text-sm lg:text-lg font-semibold py-4">
                                 More than <span className="text-primary text-lg md:text-xl lg:text-2xl">20+ Varieties</span> of momo available for you
                             </div>
                             <div className="py-6">

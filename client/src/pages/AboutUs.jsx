@@ -20,15 +20,15 @@ import assistantChef2 from "../assets/images/chef3.jpeg"
 
 const AboutUs = () => {
   return (
-    <div className="pb-10">
+    <div className="pb-10 font-poppins">
         <div className=" px-8 md:px-16 xl:px-32">
           <div className='my-6 md:py-8 flex justify-between items-center'>                
               <div className="flex flex-col gap-4 md:w-1/2">
-                <div className="text-secondary capitalize italic text-2xl font-light">
+                <div className="font-allura text-secondary capitalize italic text-2xl font-light">
                   about us
                 </div>
-                <div className="text-black-light uppercase">we pride ourself on</div>
-                <div className="text:lg lg:text-2xl font-bold text-start flex flex-col">
+                <div className="text-black-light font-nova uppercase">we pride ourself on</div>
+                <div className="text:lg lg:text-2xl font-nova font-bold text-start flex flex-col">
                     <span className=" text-primary">Our authentic momo recipes</span>  
                     <span className="text-black-dark">passed down through generations</span>
                 </div>
