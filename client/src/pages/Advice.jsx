@@ -10,7 +10,7 @@ import QrScanner from "../components/common/QrScanner"
 const Advice = () => {
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 overflow-x-hidden">
       <PageDescription 
           pageTitle="allergy advice"
           pageQuote="at our restaurant"

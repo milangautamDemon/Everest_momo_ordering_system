@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import PrimaryButton from './common/PrimaryButton';
 import CommonIcon from './common/Icon';
 import { FaFacebookF } from "react-icons/fa6";
@@ -10,9 +10,12 @@ import { useState } from "react";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleToggle = () => setIsMenuOpen(!isMenuOpen);
     const handleMenuClose = () => setIsMenuOpen(false);
+
+    const handleContactButton = () => navigate("/contact");
 
     return (
         <nav className="py-2 px-8 md:px-16 xl:px-32 relative bg-white-default border-b-2 border-white-light border-solid z-50">
@@ -22,11 +25,11 @@ const Navbar = () => {
                 </div>
 
                 <div className={`absolute top-14 w-full lg:relative lg:top-0 lg:w-auto lg:flex lg:items-center ${isMenuOpen ? 'block' : 'hidden'}`}>
-                    <ul className="font-hachi lg:font-poppins w-full flex flex-col justify-center items-center gap-2 bg-black-dark py-6 text-black-light lg:text-secondary-light lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
+                    <ul className="font-hachi lg:font-poppins w-full flex flex-col justify-center items-center gap-2 bg-black-dark py-6 text-black-light lg:text-black-dark lg:flex-row lg:bg-white lg:py-0 lg:bg-white-default xl:gap-6">
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active" : "text-lg font-bold capitalize lg:text-sm lg:font-light"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
                                 to="/aboutus"
                             >
                                 about us
@@ -35,7 +38,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active" : "text-lg font-bold capitalize lg:text-sm lg:font-light"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
                                 to="/menu"
                             >
                                 our menu
@@ -44,7 +47,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active" : "text-lg font-bold capitalize lg:text-sm lg:font-light"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-secondary"}
                                 to="/services"
                             >
                                 our services
@@ -53,7 +56,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active" : "text-lg font-bold capitalize lg:text-sm lg:font-light"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
                                 to="/advice"
                             >
                                 allergy advice
@@ -69,7 +72,7 @@ const Navbar = () => {
                         <CommonIcon iconName={IoLogoInstagram} />
                     </div>
                     <div>
-                        <PrimaryButton buttonName="contact us" classFeature="bg-primary px-7 hover:bg-primary-dark" />
+                        <PrimaryButton buttonName="contact us" handleButton={handleContactButton} classFeature="bg-primary px-7 hover:bg-primary-dark" />
                     </div>
                 </div>
                 <div className="hamburgar-menu lg:hidden" onClick={handleToggle}>
