@@ -43,7 +43,7 @@ const Services = () => {
       />
 
       <ResturantForCustomer
-        feature="flex-row" 
+        feature="flex-row-reverse" 
         icon={SiCodechef} 
         title="categring"
         para="Only the best food with top quality Only the best food with top quality products and ingred products Only the best food with top quality products and ingred and ingredients"

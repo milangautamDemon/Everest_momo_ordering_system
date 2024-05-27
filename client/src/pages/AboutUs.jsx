@@ -43,7 +43,7 @@ const AboutUs = () => {
           classFeature="items-start"
         />
         
-        <div className="flex flex-col pt-16 mt-8">
+        <div className="flex flex-col gap-10 pt-14 mt-8">
           <ChiefService 
           classFeature="flex-row"
           blackHeading="Our momos are"
