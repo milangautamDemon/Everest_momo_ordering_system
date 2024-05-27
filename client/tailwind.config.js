@@ -38,16 +38,31 @@ export default {
         dark: '#0504AA',
       }
     },
-    
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+      roman: 'upper-roman',
+      circle: 'circle'
+    },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
       allura: ["Allura", "cursive", "sans-serif"],
       nova: ["Nova Mono", "monospace", "sans-serif"],
       hachi: ["Hachi Maru Pop", "cursive", "sans-serif"],
       oswald: ["Oswald", "sans-serif"],
-      varel: ["Varela", "sans-serif"]
+      varel: ["Varela", "sans-serif"],
+      chela: ["Chela One", "system-ui"]
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'ingredient-bg': "url('src/assets/images/advice-bg.jpeg')",
+      },
+      backgroundPosition: {
+        'center-bottom': 'center bottom',
+      },
+    },
   },
   plugins: [],
 }

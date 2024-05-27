@@ -4,7 +4,7 @@ import MomoMenu from "./MomoMenu"
 
 const MomoMenuList = ({menuImg, menuName, menuPrice, itemDescription}) => {
   return (
-    <div className="w-56 h-auto flex flex-col items-center gap-3">
+    <div className="w-56 h-auto flex flex-col items-center gap-3 my-8">
         <MomoMenu 
             menuImg={menuImg}
             menuName={menuName} 
