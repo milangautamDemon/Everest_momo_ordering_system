@@ -14,7 +14,7 @@ const ChiefService = ({ primaryHeading, blackHeading, normalPara, cookingImage, 
                <img src={cookingImage} alt="Hotel Service Image" className="w-full h-60 sm:h-72 rounded-lg md:rounded-sm" />
             </div>
         </div>
-        <div className="momo invisible md:visible md:flex md:justify-center md:-translate-y-20">
+        <div className="momo hidden md:flex md:justify-center md:-translate-y-20">
           <img src={momoImg} alt="momo image" className="hidden md:block md:w-40" />
         </div>
     </div>
