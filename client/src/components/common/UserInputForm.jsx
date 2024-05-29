@@ -5,93 +5,61 @@ import { useRef, useState } from "react";
 import PrimaryButton from './PrimaryButton';
 
 const UserInputForm = ({btnColor}) => {
-////use while re-rendering is required
-//     const [userForm, setUserForm] = useState({
-//         firstName: "",
-//         lastName : "",
-//         email : "",
-//         helps: "",
-//         phone : "",
-//         message : ""
-//     })
-// // const [phone, setPhone] = useState('');
-// const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setUserForm((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
 
-//   const handlePhoneChange = (phone) => {
-//     setUserForm((prev) => ({
-//       ...prev,
-//       phone,
-//     }));
-//   };
+    //uses when re-render or immediate feedback is not required
+    const firstNameRef = useRef(null);
+    const lastNameRef = useRef(null);
+    const emailRef = useRef(null);
+    const helpsRef = useRef(null);
+    const phoneRef = useRef(null);
+    const messageRef = useRef(null);
 
+    const [errors, setErrors] = useState({});
 
+    const formValidate = () => {
+        const newErrors = {};
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-//   const handleSubmitForm = (e) => {
-//     e.preventDefault();
-//     console.log(userForm);
-//   };
+        const trimFirstName = firstNameRef.current?.value?.trim();
+        const trimLastName = lastNameRef.current?.value?.trim();
+        const trimEmail = emailRef.current?.value?.trim();
+        const trimHelps = helpsRef.current?.value?.trim();
+        const trimPhone = phoneRef.current?.state.value?.trim();
+        const trimMessage = messageRef.current?.value?.trim();
 
-
-//uses when re-render or immediate feedback is not required
-const firstNameRef = useRef(null);
-const lastNameRef = useRef(null);
-const emailRef = useRef(null);
-const helpsRef = useRef(null);
-const phoneRef = useRef(null);
-const messageRef = useRef(null);
-
-const [errors, setErrors] = useState({});
-
-const formValidate = () => {
-    const newErrors = {};
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const trimFirstName = firstNameRef.current?.value?.trim();
-    const trimLastName = lastNameRef.current?.value?.trim();
-    const trimEmail = emailRef.current?.value?.trim();
-    const trimHelps = helpsRef.current?.value?.trim();
-    const trimPhone = phoneRef.current?.state.value?.trim();
-    const trimMessage = messageRef.current?.value?.trim();
-
-    if(!trimFirstName) newErrors.firstName = "User First Name is Required !!!";
-    if(!trimLastName) newErrors.lastName = "User Last Name is Required !!!";
-    if(!trimEmail){
-        newErrors.email = "Email is Required !!!";
-    }else if(trimEmail.test(emailPattern)){
-        newErrors.email = "Please Enter Valid Email !!!";
-    }
-    if(trimHelps) newErrors.helps = "Please Select Option !!!"
-    if(!trimPhone) newErrors.phone = "Phone Number is Required !!!";
-    if(!trimMessage) newErrors.message = "Please Enter Some Message !!!";
-
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
-}
-
-
-const handleSubmitForm = (e) => {
-    e.preventDefault();
-    if(formValidate()){
-        const formData = {
-            firstName: firstNameRef.current.value,
-            lastName: lastNameRef.current.value,
-            email: emailRef.current.value,
-            helps: helpsRef.current.value,
-            phone: phoneRef.current.state.value,
-            message: messageRef.current.value
+        if(!trimFirstName) newErrors.firstName = "User First Name is Required !!!";
+        if(!trimLastName) newErrors.lastName = "User Last Name is Required !!!";
+        if(!trimEmail){
+            newErrors.email = "Email is Required !!!";
+        }else if(trimEmail.test(emailPattern)){
+            newErrors.email = "Please Enter Valid Email !!!";
         }
-        console.log(formData)
-   }else{
-    alert("validation failed !!!")
-   }
-}
+        if(trimHelps) newErrors.helps = "Please Select Option !!!"
+        if(!trimPhone) newErrors.phone = "Phone Number is Required !!!";
+        if(!trimMessage) newErrors.message = "Please Enter Some Message !!!";
+
+        setErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0;
+    }
+
+
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+        if(formValidate()){
+            const formData = {
+                firstName: firstNameRef.current.value,
+                lastName: lastNameRef.current.value,
+                email: emailRef.current.value,
+                helps: helpsRef.current.value,
+                phone: phoneRef.current.state.value,
+                message: messageRef.current.value
+            }
+            console.log(formData)
+    }else{
+        alert("validation failed !!!")
+    }
+    }
 
 
   return (
