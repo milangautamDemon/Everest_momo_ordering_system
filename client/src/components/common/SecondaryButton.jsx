@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-  const SecondaryButton = ({ buttonName, classFeature, buttonIcon, handleButton }) => {
+  const SecondaryButton = ({ buttonName, classFeature, buttonIcon, ...handle }) => {
     const Icon = buttonIcon;
     return (
       <>
-          <button onClick={handleButton} type="button" className={`flex px-8 py-3 rounded-full gap-1 items-center font-light text-white-default capitalize text-sm lg:gap-2 ${classFeature}`} data-bs-toggle="button">
+          <button {...handle} type="button" className={`flex px-8 py-3 rounded-full gap-1 items-center font-light text-white-default capitalize text-sm lg:gap-2 ${classFeature}`} data-bs-toggle="button">
               <div className="icon text-lg lg:text-xl">
                 <Icon />
               </div>
