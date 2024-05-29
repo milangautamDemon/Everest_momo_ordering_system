@@ -23,54 +23,54 @@ const MostPopularMenu = () => {
         {
             image : buffMomo,
             menuName : "fry momo",
-            itemType : "buff",
+            category : "buff",
             price : 150
         },
         {
             image : seaMomo,
-            itemType : "buff",
+            category : "buff",
             menuName : "sea momo",
             price : 250
         },
         {
             image : chillyMomo,
-            itemType : "buff",
+            category : "buff",
             menuName : "chilly momo",
             price : 190
         },
         {
             image : buffMomo,
             menuName : "fry momo",
-            itemType : "chicken",
+            category : "chicken",
             price : 150
         },
         {
             image : seaMomo,
-            itemType : "chicken",
+            category : "chicken",
             menuName : "sea momo",
             price : 250
         },
         {
             image : chillyMomo,
-            itemType : "chicken",
+            category : "chicken",
             menuName : "chilly momo",
             price : 190
         },
         {
             image : buffMomo,
             menuName : "fry momo",
-            itemType : "veg",
+            category : "veg",
             price : 150
         },
         {
             image : seaMomo,
-            itemType : "veg",
+            category : "veg",
             menuName : "sea momo",
             price : 250
         },
         {
             image : chillyMomo,
-            itemType : "veg",
+            category : "veg",
             menuName : "chilly momo",
             price : 190
         }
@@ -115,9 +115,9 @@ const MostPopularMenu = () => {
                 <div className="text-sm text-center md:text-lg text-black">Browse through a Varieties of recipes with fresh ingredient selected only from the best place </div>
             </div>
             <div className="py-4 flex gap-6 justify-center items-center my-6">
-                <SimpleBtn btnName='buff' />
-                <SimpleBtn btnName="chicken" />
-                <SimpleBtn btnName='veg' />
+                <SimpleBtn onClick={() => handleClick("buff")} btnName='buff' />
+                <SimpleBtn onClick={() => handleClick("chicken")} btnName="chicken" />
+                <SimpleBtn onClick={() => handleClick("veg")} btnName='veg' />
             </div>
                 {/* <div className="flex justify-center gap-8 lg:gap-12 xl:gap-32 items-center pt-6"> */}
                 <Slider {...settings}>
