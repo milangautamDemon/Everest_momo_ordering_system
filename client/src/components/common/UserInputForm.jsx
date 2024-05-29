@@ -123,14 +123,14 @@ const UserInputForm = ({btnColor}) => {
                                 rounded-lg  
                             border border-black-light shadow-sm "
                     required >
-                        <option value="" className="text-black-light">Choose</option>
-                        <option value="momo">About momo</option>
-                        <option value="contact">Our contact</option>
-                        <option value="price">Price</option>
-                    </select>
-                    {errors.helps && (
-                        <span className="text-danger-light text-xs">{errors.helps}</span>
-                    )}
+                    <option value="" className="text-black-light">Choose</option>
+                    <option value="momo">About momo</option>
+                    <option value="contact">Our contact</option>
+                    <option value="price">Price</option>
+                </select>
+                {errors.helps && (
+                    <span className="text-danger-light text-xs">{errors.helps}</span>
+                )}
             </div>
             <div>
                 <label htmlFor="phone" className="block my-2 text-left  
