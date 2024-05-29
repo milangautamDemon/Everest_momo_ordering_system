@@ -9,73 +9,80 @@ import chillyMomo from "../../assets/images/chilly-momo.png";
 import { useNavigate } from "react-router-dom";
 import { TiArrowRight } from "react-icons/ti";
 import SecondaryButton from "../common/SecondaryButton";
+import { useState } from "react";
 
+
+const momoTypeLists = [
+    {
+        image : buffMomo,
+        menuName : "fry buff momo",
+        category : "buff",
+        price : 150
+    },
+    {
+        image : seaMomo,
+        category : "buff",
+        menuName : "sea buff momo",
+        price : 250
+    },
+    {
+        image : chillyMomo,
+        category : "buff",
+        menuName : "chilly buff momo",
+        price : 190
+    },
+    {
+        image : buffMomo,
+        menuName : "fry chicken momo",
+        category : "chicken",
+        price : 150
+    },
+    {
+        image : seaMomo,
+        category : "chicken",
+        menuName : "sea chicken momo",
+        price : 250
+    },
+    {
+        image : chillyMomo,
+        category : "chicken",
+        menuName : "chilly chicken momo",
+        price : 190
+    },
+    {
+        image : buffMomo,
+        menuName : "fry veg momo",
+        category : "veg",
+        price : 150
+    },
+    {
+        image : seaMomo,
+        category : "veg",
+        menuName : "sea veg momo",
+        price : 250
+    },
+    {
+        image : chillyMomo,
+        category : "veg",
+        menuName : "chilly veg momo",
+        price : 190
+    }
+
+];
 
 const MostPopularMenu = () => {
+    const [filterCategory, setFilterCategory] = useState("buff");
 
     const navigate = useNavigate();
 
 
     const handleMenuButton = () => navigate("/menu");
+    const handleCategory = (category) => {
+        setFilterCategory(category);
+    }
+    
+    const filterData = momoTypeLists.filter(item => item.category === filterCategory);
 
-
-    const momoTypeLists = [
-        {
-            image : buffMomo,
-            menuName : "fry momo",
-            category : "buff",
-            price : 150
-        },
-        {
-            image : seaMomo,
-            category : "buff",
-            menuName : "sea momo",
-            price : 250
-        },
-        {
-            image : chillyMomo,
-            category : "buff",
-            menuName : "chilly momo",
-            price : 190
-        },
-        {
-            image : buffMomo,
-            menuName : "fry momo",
-            category : "chicken",
-            price : 150
-        },
-        {
-            image : seaMomo,
-            category : "chicken",
-            menuName : "sea momo",
-            price : 250
-        },
-        {
-            image : chillyMomo,
-            category : "chicken",
-            menuName : "chilly momo",
-            price : 190
-        },
-        {
-            image : buffMomo,
-            menuName : "fry momo",
-            category : "veg",
-            price : 150
-        },
-        {
-            image : seaMomo,
-            category : "veg",
-            menuName : "sea momo",
-            price : 250
-        },
-        {
-            image : chillyMomo,
-            category : "veg",
-            menuName : "chilly momo",
-            price : 190
-        }
-
-    ];
 
     const settings = {
         dots: false,
@@ -115,15 +122,15 @@ const MostPopularMenu = () => {
                 <div className="text-sm text-center md:text-lg text-black">Browse through a Varieties of recipes with fresh ingredient selected only from the best place </div>
             </div>
             <div className="py-4 flex gap-6 justify-center items-center my-6">
-                <SimpleBtn onClick={() => handleClick("buff")} btnName='buff' />
-                <SimpleBtn onClick={() => handleClick("chicken")} btnName="chicken" />
-                <SimpleBtn onClick={() => handleClick("veg")} btnName='veg' />
+                <SimpleBtn onClick={() => handleCategory("buff")} btnName='buff' isActive={filterCategory === "buff"}  />
+                <SimpleBtn onClick={() => handleCategory("chicken")} btnName="chicken" isActive={filterCategory === "chicken"} />
+                <SimpleBtn onClick={() => handleCategory("veg")} btnName='veg' isActive={filterCategory === "veg"} />
             </div>
                 {/* <div className="flex justify-center gap-8 lg:gap-12 xl:gap-32 items-center pt-6"> */}
                 <Slider {...settings}>
                     {
-                        momoTypeLists.map((list, index) => (
-                            <MomoMenu key={index} menuImg={list.image} menuName={list.menuName} menuPrice={list.price} />
+                        filterData.map((item, index) => (
+                            <MomoMenu key={index} menuImg={item.image} menuName={item.menuName} menuPrice={item.price} />
                         ))
                     }
                 </Slider>

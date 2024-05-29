@@ -72,7 +72,7 @@ const Navbar = () => {
                         <CommonIcon iconName={IoLogoInstagram} />
                     </div>
                     <div>
-                        <PrimaryButton buttonName="contact us" handleButton={handleContactButton} classFeature="bg-primary px-7 hover:bg-primary-dark" />
+                        <PrimaryButton buttonName="contact us" onClick={handleContactButton} classFeature="bg-primary px-7 hover:bg-primary-dark" />
                     </div>
                 </div>
                 <div className="hamburgar-menu lg:hidden" onClick={handleToggle}>

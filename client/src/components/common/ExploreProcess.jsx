@@ -3,7 +3,7 @@
 import { MdSlowMotionVideo } from "react-icons/md";
 
 
-const ExploreProcess = ({exploreIcon, exploreImg, classFeature, exploreTitle, explorePara, btnName}) => {
+const ExploreProcess = ({exploreIcon, exploreImg, classFeature, exploreTitle, explorePara, btnName, handle}) => {
     const Icon = exploreIcon;
   return (
     <>
@@ -17,7 +17,7 @@ const ExploreProcess = ({exploreIcon, exploreImg, classFeature, exploreTitle, ex
                     <div className="text-lg md:text-2xl font-bold capitalize text-white-default">{exploreTitle}</div>
                     <div className="text-sm font-normal text-white-default">{explorePara}</div>
                     <div className="my-4 flex md:justify-start">
-                        <Icon buttonName={btnName} buttonIcon={MdSlowMotionVideo} classFeature="bg-secondary hover:bg-secondary-dark" />
+                        <Icon onClick={handle} buttonName={btnName} buttonIcon={MdSlowMotionVideo} classFeature="bg-secondary hover:bg-secondary-dark" />
                     </div>
                 </div>
             </div>
