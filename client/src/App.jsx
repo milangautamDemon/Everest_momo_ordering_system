@@ -6,6 +6,7 @@ import Advice from './pages/Advice';
 import Menu from './pages/Menu';
 import ContactUs from './pages/ContactUs';
 import Services from './pages/Services';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -44,8 +45,10 @@ function App() {
   ]);
 
   return (
-    // Use RouterProvider to provide the router to your application
+    <>
     <RouterProvider router={router} />
+    <Toaster />
+    </>
   );
 }
 

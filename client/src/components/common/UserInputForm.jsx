@@ -3,18 +3,22 @@
 import PhoneInput from 'react-phone-input-2'
 import { useRef, useState } from "react";
 import PrimaryButton from './PrimaryButton';
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const UserInputForm = ({btnColor}) => {
 
+
     //uses when re-render or immediate feedback is not required
-    const firstNameRef = useRef(null);
-    const lastNameRef = useRef(null);
-    const emailRef = useRef(null);
-    const helpsRef = useRef(null);
-    const phoneRef = useRef(null);
-    const messageRef = useRef(null);
+    const firstNameRef = useRef("");
+    const lastNameRef = useRef("");
+    const emailRef = useRef("");
+    const helpsRef = useRef("");
+    const messageRef = useRef("");
+    const [phone, setPhone] = useState("")
 
     const [errors, setErrors] = useState({});
+
 
     const formValidate = () => {
         const newErrors = {};
@@ -24,17 +28,17 @@ const UserInputForm = ({btnColor}) => {
         const trimLastName = lastNameRef.current?.value?.trim();
         const trimEmail = emailRef.current?.value?.trim();
         const trimHelps = helpsRef.current?.value?.trim();
-        const trimPhone = phoneRef.current?.state.value?.trim();
+        const trimPhone = phone.trim();
         const trimMessage = messageRef.current?.value?.trim();
 
         if(!trimFirstName) newErrors.firstName = "User First Name is Required !!!";
         if(!trimLastName) newErrors.lastName = "User Last Name is Required !!!";
-        if(!trimEmail){
-            newErrors.email = "Email is Required !!!";
-        }else if(trimEmail.test(emailPattern)){
-            newErrors.email = "Please Enter Valid Email !!!";
+        if (!trimEmail) {
+            newErrors.email = "Email is Required!!!";
+        } else if (!emailPattern.test(trimEmail)) {
+            newErrors.email = "Please Enter Valid Email!!!";
         }
-        if(trimHelps) newErrors.helps = "Please Select Option !!!"
+        if(!trimHelps) newErrors.helps = "Please Select Option !!!"
         if(!trimPhone) newErrors.phone = "Phone Number is Required !!!";
         if(!trimMessage) newErrors.message = "Please Enter Some Message !!!";
 
@@ -43,8 +47,7 @@ const UserInputForm = ({btnColor}) => {
         return Object.keys(newErrors).length === 0;
     }
 
-
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = async(e) => {
         e.preventDefault();
         if(formValidate()){
             const formData = {
@@ -52,12 +55,26 @@ const UserInputForm = ({btnColor}) => {
                 lastName: lastNameRef.current.value,
                 email: emailRef.current.value,
                 helps: helpsRef.current.value,
-                phone: phoneRef.current.state.value,
+                phone: phone,
                 message: messageRef.current.value
             }
-            console.log(formData)
+            if (formData) {
+                try {
+                    const response = await axios.post("http://localhost:3000/api/add-contact", formData, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    toast.success(response.data.msg, {position: "top-right"});
+                } catch (error) {
+                    console.error('Error response:', error.response); // Log the full error response
+                    toast.error(error.response.data.err_code, {position: "top-right"});
+                }
+            }
+
     }else{
-        alert("validation failed !!!")
+        console.error("validation failed !!!")
     }
     }
 
@@ -143,9 +160,8 @@ const UserInputForm = ({btnColor}) => {
                     height: "44px"
                 }}
                     country={'np'}
-                    ref={phoneRef}
-                    // value={userForm.phone}
-                    // onChange={handlePhoneChange}
+                    value={phone}
+                    onChange={(phone) => setPhone(phone)}
                 />
                     {errors.phone && (
                         <span className="text-danger-light text-xs">{errors.phone}</span>
