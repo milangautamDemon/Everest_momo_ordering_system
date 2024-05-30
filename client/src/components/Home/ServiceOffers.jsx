@@ -30,27 +30,24 @@ const ServiceOffers = () => {
         />
 
         <div className="flex flex-col gap-4 my-12 mx-8 md:mx-16 xl:mx-32 ">
-            <div className="flex flex-col gap-10 my-4 lg:flex-row items-center md:flex-row">
+            <div className="flex flex-col gap-10 my-4 items-center md:flex-row md: justify-center">
                 <HotelService 
                     serviceIcon={GiOpenedFoodCan} 
                     serviceTitle="quality food" 
                     servicePara="Only the best food with top quality products and ingredients" 
-                    classFeature="items-center"
-                    paraClassTextFeature="text-center" 
+                    classFeature='lg:text-center'
                 />
                 <HotelService 
                     serviceIcon={GiPartyPopper} 
                     serviceTitle="private party" 
                     servicePara="Only the best food with top quality products and ingredients" 
-                    classFeature="items-center"
-                    paraClassTextFeature="text-center" 
+                    classFeature='lg:text-center'
                 />
                 <HotelService 
-                serviceIcon={SiCodechef} 
-                serviceTitle="categring" 
-                servicePara="Only the best food with top quality products and ingredients" 
-                classFeature="items-center"
-                paraClassTextFeature="text-center" 
+                    serviceIcon={SiCodechef} 
+                    serviceTitle="categring" 
+                    servicePara="Only the best food with top quality products and ingredients" 
+                    classFeature='lg:text-center'
                 />
             </div>
             
