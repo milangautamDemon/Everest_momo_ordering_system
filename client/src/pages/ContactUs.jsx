@@ -1,14 +1,11 @@
-import { useContext } from "react"
-import { Map } from "../components/Map"
-import { mapContext } from "../context/mapContext";
 import UserInputForm from "../components/common/UserInputForm";
 import ContactCard from "../components/common/ContactCard";
 import { RiMapPinFill } from "react-icons/ri";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaClock } from "react-icons/fa6";
+import Map from "../components/Map";
 
 const ContactUs = () => {
-  const {currentMarkerPosition, setCurrentMarkerPosition} = useContext(mapContext);
 
   return (
     <div className="pt-8">
@@ -53,13 +50,12 @@ const ContactUs = () => {
       <div className="w-full flex flex-col md:w-100% md:flex-row bg-white-light">
         {/*map*/}
         <div className="w-full h-80 md:h-auto md:w-1/2">
-            <Map currentMarkerPosition={currentMarkerPosition} setCurrentMarkerPosition={setCurrentMarkerPosition} />
+            <Map />
         </div>
         {/*user input form*/}
-        <div className="bg-white-light md:bg-white-default py-8 md:w-1/2 lg:m-8 lg:shadow-md lg:rounded-lg">
           <UserInputForm btnColor="bg-secondary" />
-        </div>
       </div>
+      
     </div>
   )
 }

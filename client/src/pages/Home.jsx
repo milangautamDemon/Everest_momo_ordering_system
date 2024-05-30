@@ -1,19 +1,16 @@
 import 'react-phone-input-2/lib/style.css'
-import { useContext } from "react";
-import { Map } from "../components/Map";
-import { mapContext } from "../context/mapContext";
 import MostPopularMenu from "../components/Home/MostPopularMenu";
 import CustomerLove from "../components/Home/CustomerLove";
 import DisplayRestaurantHome from "../components/Home/DisplayRestaurantHome";
 import ServiceOffers from '../components/Home/ServiceOffers';
 import CustomerTalk from '../components/Home/CustomerTalk';
 import GetInTouch from '../components/Home/GetInTouch';
+import Map from '../components/Map';
 
 
 
 const Home = () => {
 
-    const {currentMarkerPosition, setCurrentMarkerPosition} = useContext(mapContext);
 
     return (
         <div className="font-poppins py-4 overflow-hidden">
@@ -31,7 +28,7 @@ const Home = () => {
 
             {/*map*/}
             <div className="w-full h-60 md:h-80 lg:h-96 mt-12">
-                <Map currentMarkerPosition={currentMarkerPosition} setCurrentMarkerPosition={setCurrentMarkerPosition} />
+                <Map />
             </div>
 
         </div>

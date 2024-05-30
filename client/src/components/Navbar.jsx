@@ -29,7 +29,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  hover:text-secondary"}
                                 to="/aboutus"
                             >
                                 about us
@@ -38,7 +38,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light text-danger-light" : "text-lg font-bold capitalize lg:text-sm lg:font-light  hover:text-secondary"}
                                 to="/menu"
                             >
                                 our menu
@@ -47,7 +47,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-secondary"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light hover:text-secondary"}
                                 to="/services"
                             >
                                 our services
@@ -56,7 +56,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 onClick={handleMenuClose}
-                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light active:text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  active:text-secondary"}
+                                className={({ isActive }) => isActive ? "text-lg font-bold capitalize lg:text-sm lg:font-light text-danger" : "text-lg font-bold capitalize lg:text-sm lg:font-light  hover:text-secondary"}
                                 to="/advice"
                             >
                                 allergy advice
