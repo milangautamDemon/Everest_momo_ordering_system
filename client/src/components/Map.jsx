@@ -7,6 +7,7 @@ import L from 'leaflet';
 import 'leaflet-routing-machine';
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+
 const RoutingMachine = ({ userLocation, destination }) => {
   const map = useMapEvents({});
   
@@ -54,7 +55,7 @@ const Map = () => {
   };
 
   return (
-    <MapContainer center={[27.69152, 85.342049]} zoom={13} style={{ height: '100%', width: '100%' }} zoomAnimation={false}  markerZoomAnimation={false} >
+    <MapContainer center={destination} zoom={13} style={{ height: '100%', width: '100%' }} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

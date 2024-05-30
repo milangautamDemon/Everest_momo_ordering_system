@@ -6,6 +6,43 @@ import AdviceCard from "../components/common/AdviceCard"
 import AdvicePara from "../components/common/AdvicePara"
 import QrScanner from "../components/common/QrScanner"
 
+const adviceDatas = [
+  {
+    adviceTitle: "For the Sough",
+    adviceLists: ["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)"]
+  },
+  {
+    adviceTitle : "For the Chicken Filling",
+    adviceLists : ["1cup chicken (minced)", "1/2 onions, finely chopped", "1/4 tsp black pepper powder", "1 tsp oil", "1/2 soya sauce", "salt", "1/4 tsp vinegar"]
+  },
+  {
+    adviceTitle: "For the Sough",
+    adviceLists: ["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)"]
+  },
+  {
+    adviceTitle: "For the Sough",
+    adviceLists: ["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)"]
+  },
+  {
+    adviceTitle: "For the Sough",
+    adviceLists: ["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)", "1/2 garlic paste", "1/2 soya sauce", "salt", "1/4 tsp vinegar"]
+  },
+  {
+    adviceTitle: "For the Sough",
+    adviceLists: ["25 gms garlic, peeled", "6gm whole red chilly", "3 tsp vinegar", "1/2 garlic paste", "1 tsp oil", "salt", "1/4 tsp vinegar"]
+  }
+]
+
+const adviceParagraph= ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! esse pariatur tempora perspiciatis assumenda quisquam corporis!",
+            
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
+
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
+
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
+
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!"
+          ]
 
 const Advice = () => {
 
@@ -30,25 +67,12 @@ const Advice = () => {
 
         <div className="bg-ingredient-bg bg-contain bg-no-repeat w-full">
           <div className="flex flex-col items-center gap-10 h-5/6 my-6">
-            <AdviceCard
-            adviceTitle="For the Sough"
-            adviceLists={["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)"]}
-            />
-
-            <AdviceCard
-            adviceTitle="For the Chicken Filling"
-            adviceLists={["1cup chicken (minced)", "1/2 onions, finely chopped", "1/4 tsp black pepper powder", "1 tsp oil", "1/2 soya sauce", "salt", "1/4 tsp vinegar"]}
-            />
-
-            <AdviceCard
-            adviceTitle="For the Sough"
-            adviceLists={["120 gms refined flour", "1/4 tsp baking powder", "1/2 tsp salt water (for kneading)", "1/2 garlic paste", "1/2 soya sauce", "salt", "1/4 tsp vinegar"]}
-            />
-
-            <AdviceCard
-            adviceTitle="For the Sough"
-            adviceLists={["25 gms garlic, peeled", "6gm whole red chilly", "3 tsp vinegar", "1/2 garlic paste", "1 tsp oil", "salt", "1/4 tsp vinegar"]}
-            />
+            {
+              adviceDatas.map((data, index) => ( <AdviceCard key={index}
+                adviceTitle= {data.adviceTitle}
+                adviceLists={data.adviceLists}
+                />))
+            }
           </div>
         </div>
 
@@ -60,21 +84,13 @@ const Advice = () => {
           secondaryTitle="used"
         />
 
-        <AdvicePara 
-            adviceParas= {["Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! esse pariatur tempora perspiciatis assumenda quisquam corporis!",
-            
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
-
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
-
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!",
-
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis! Quae mollitia temporibus adipisci deserunt qui optio hic porro illo iure libero? Repellendus officiis vero cupiditate corrupti unde fuga at aperiam eveniet sed, laudantium fugiat esse pariatur tempora perspiciatis assumenda quisquam corporis!"
-          ]}
-        />
+        <AdvicePara  adviceParas= {adviceParagraph} />
+        
       </div>
-
-      <QrScanner />
+     
+      <div className="mx-8 md:mx-16 xl:mx-32">
+        <QrScanner />
+      </div>
 
     </div>
   )
