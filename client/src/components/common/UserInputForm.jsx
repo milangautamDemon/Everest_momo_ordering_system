@@ -75,6 +75,8 @@ const UserInputForm = ({btnColor}) => {
 
     }else{
         console.error("validation failed !!!")
+        toast.error("Form Validation Failed !!!", {position: "top-left"});
+
     }
     }
 
