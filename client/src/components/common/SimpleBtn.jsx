@@ -1,12 +1,21 @@
 /* eslint-disable react/prop-types */
 
-
-const SimpleBtn = ({btnName, isActive, ...handle}) => {
+const SimpleBtn = ({ btnName, isActive, ...handle }) => {
   return (
-    <div {...handle} className={`w-20 h-8 md:w-28 md:h-10 flex justify-center items-center border-2 border-solid ${isActive? "border-black-dark" : "border-black-light"} rounded-full cursor-pointer`}>
-        <button type="button" className="capitalize text-sm font-semibold" data-bs-toggle="button" aria-pressed="true">{btnName}</button>
+    <div
+      {...handle}
+      className={`flex h-8 w-20 items-center justify-center border-2 border-solid md:h-10 md:w-28 ${isActive ? "border-black-dark" : "border-black-light"} cursor-pointer rounded-full`}
+    >
+      <button
+        type="button"
+        className="text-sm font-semibold capitalize"
+        data-bs-toggle="button"
+        aria-pressed="true"
+      >
+        {btnName}
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default SimpleBtn;

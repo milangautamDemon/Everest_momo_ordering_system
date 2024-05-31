@@ -6,26 +6,30 @@ import { FaClock } from "react-icons/fa6";
 import Map from "../components/Map";
 
 const ContactUs = () => {
-
   return (
     <div className="pt-8">
-      <div className="font-poppins px-8 pb-8 md:px-16 xl:px-32">
-        <div className="font-allura text-4xl font-medium text-secondary-light capitalize text-center py-4">
+      <div className="px-8 pb-8 font-poppins md:px-16 xl:px-32">
+        <div className="py-4 text-center font-allura text-4xl font-medium capitalize text-secondary-light">
           our contact
         </div>
-        <div className="flex flex-col gap-1 text-center items-center">
-          <div className="text-black uppercase text-sm font-light">get in touch</div>
-          <div className="text-black-dark text-sm md:text-lg font-semibold"><span className="text-primary capitalize">our friendly team</span> would love to hear from you</div>
+        <div className="flex flex-col items-center gap-1 text-center">
+          <div className="text-sm font-light uppercase text-black">
+            get in touch
+          </div>
+          <div className="text-sm font-semibold text-black-dark md:text-lg">
+            <span className="capitalize text-primary">our friendly team</span>{" "}
+            would love to hear from you
+          </div>
         </div>
-        <div className="flex flex-col gap-10 py-8 items-center md:flex-row md:gap-0 md:justify-between">
-          <ContactCard 
+        <div className="flex flex-col items-center gap-10 py-8 md:flex-row md:justify-between md:gap-0">
+          <ContactCard
             cardIcon={RiMapPinFill}
             cardHeading="location"
             cardTopRightText="new baneshwor-41203,"
             cardTopSecondText="kathmandu, bagmati, nepal"
           />
 
-          <ContactCard 
+          <ContactCard
             cardIcon={BsTelephoneFill}
             cardHeading="phone"
             cardTopTitle="mobile:"
@@ -33,31 +37,29 @@ const ContactUs = () => {
             cardTopSecondText="(+0977)9875624536"
             cardBottomTitle="tel:"
             cardBottomText="01-93843433"
-          /> 
+          />
 
-          <ContactCard 
+          <ContactCard
             cardIcon={FaClock}
             cardHeading="service time"
             cardTopTitle="mon - fri"
             cardTopRightText="(+0977)9875624536"
             cardBottomTitle="sat - sun"
             cardBottomText="closed"
-          /> 
-
+          />
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:w-100% md:flex-row bg-white-light">
+      <div className="md:w-100% flex w-full flex-col bg-white-light md:flex-row">
         {/*map*/}
-        <div className="w-full h-80 md:h-auto md:w-1/2">
-            <Map />
+        <div className="h-80 w-full md:h-auto md:w-1/2">
+          <Map />
         </div>
         {/*user input form*/}
-          <UserInputForm btnColor="bg-secondary" />
+        <UserInputForm btnColor="bg-secondary" />
       </div>
-      
     </div>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

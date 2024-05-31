@@ -1,20 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import MomoMenu from "./MomoMenu"
+import MomoMenu from "./MomoMenu";
 
-const MomoMenuList = ({menuImg, menuName, menuPrice, itemDescription}) => {
+const MomoMenuList = ({ menuImg, menuName, menuPrice, itemDescription }) => {
   return (
-    <div className="w-56 h-auto flex flex-col items-center gap-3 my-8">
-        <MomoMenu 
-            menuImg={menuImg}
-            menuName={menuName} 
-            menuPrice={menuPrice}
-        />
-        <div className="text-black-light text-center text-xs md:text-sm font-normal">
-            {itemDescription}
-        </div>
+    <div className="my-8 flex h-auto w-56 flex-col items-center gap-3">
+      <MomoMenu menuImg={menuImg} menuName={menuName} menuPrice={menuPrice} />
+      <div className="text-center text-xs font-normal text-black-light md:text-sm">
+        {itemDescription}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default MomoMenuList
+export default MomoMenuList;
