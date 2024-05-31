@@ -66,3 +66,6 @@ router.post("/", async (req, res) => {
         console.error("Errors", error);
     }
 })
+
+export {router};
+export default router;
