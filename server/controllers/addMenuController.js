@@ -59,7 +59,8 @@ router.post("/", async (req, res) => {
         //success message
         res.status(200).send({
             success : true,
-            msg : "Successfully Saved Menu Details !"
+            msg : "Successfully Saved Menu Details !",
+            data : savedMenu
         })
         
     } catch (error) {
