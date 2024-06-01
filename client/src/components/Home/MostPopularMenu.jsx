@@ -1,5 +1,3 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import SimpleBtn from "../common/SimpleBtn";
 import buffMomo from "../../assets/images/fry-momo.png";
 import seaMomo from "../../assets/images/sea-momo.png";

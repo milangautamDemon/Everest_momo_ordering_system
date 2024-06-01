@@ -139,7 +139,7 @@ const AdminMenu = () => {
         <div className="text-center text-xl font-bold capitalize text-black">
           momo menu lists
         </div>
-        <ul className="grid grid-cols-3 justify-between gap-10">
+        <ul className="grid grid-cols-1 justify-between gap-10 md:grid-cols-2 lg:grid-cols-3">
           {data.map((item, index) => (
             <li
               className="flex flex-col items-center rounded-md bg-white-light px-2 py-4 shadow-lg"
@@ -153,6 +153,10 @@ const AdminMenu = () => {
                 menuName={item.name}
                 menuPrice={item.price}
                 itemDescription={item.description}
+              />
+              <PrimaryButton
+                buttonName="delete"
+                classFeature="px-6 bg-danger text-white-default hover:bg-danger-dark text-sm shadow-lg"
               />
             </li>
           ))}
