@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import Button from "../../components/common/PrimaryButton";
 import Input from "../../components/common/Input";
@@ -37,7 +36,9 @@ function Login() {
             type={false}
             label={"Password"}
           />
-          <span className=" ml-1">forget Password?</span>
+          <span className="ml-1 text-xs text-secondary-light">
+            forget Password?
+          </span>
         </div>
         <div className="flex w-full items-center justify-center">
           <Button buttonName={"Login"} classFeature="px-8 bg-secondary" />

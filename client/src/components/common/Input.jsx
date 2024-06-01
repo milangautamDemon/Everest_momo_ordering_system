@@ -1,15 +1,19 @@
-const Input = ({ label, inputchangeHandler, inputValue, type }) => {
+/* eslint-disable react/prop-types */
+
+const Input = ({ label, inputValue, type, ...handle }) => {
   return (
     <>
       <div className="relative mt-4 flex flex-col">
         <input
+          value={inputValue}
+          {...handle}
           type={`${type ? "text" : "password"}`}
-          className="bg-gray-100 text-gray-900 border-gray-200 peer rounded-lg border p-2.5 text-lg outline-none"
+          className="peer rounded-lg border border-black-light bg-white-light p-2.5 text-lg text-black-dark outline-none"
           required
         />
 
         <span
-          className={`text-gray-500 pointer-events-none absolute ml-2.5 mt-4 flex transition-all peer-placeholder-shown:-translate-y-0 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm`}
+          className={`pointer-events-none absolute ml-2.5 mt-4 flex bg-white-default px-1 text-black transition-all peer-placeholder-shown:-translate-y-0 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm`}
         >
           {label}
         </span>
