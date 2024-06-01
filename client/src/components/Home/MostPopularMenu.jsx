@@ -1,8 +1,6 @@
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SimpleBtn from "../common/SimpleBtn";
-import MomoMenu from "../common/MomoMenu";
 import buffMomo from "../../assets/images/fry-momo.png";
 import seaMomo from "../../assets/images/sea-momo.png";
 import chillyMomo from "../../assets/images/chilly-momo.png";
@@ -10,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { TiArrowRight } from "react-icons/ti";
 import SecondaryButton from "../common/SecondaryButton";
 import { useState } from "react";
+import MomoMenuList from "../common/MomoMenuList";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const momoTypeLists = [
   {
@@ -66,10 +66,59 @@ const momoTypeLists = [
     menuName: "chilly veg momo",
     price: 190,
   },
+  {
+    image: seaMomo,
+    category: "buff",
+    menuName: "sea buff momo",
+    price: 250,
+  },
+  {
+    image: chillyMomo,
+    category: "buff",
+    menuName: "chilly buff momo",
+    price: 190,
+  },
+  {
+    image: buffMomo,
+    menuName: "fry chicken momo",
+    category: "chicken",
+    price: 150,
+  },
+  {
+    image: seaMomo,
+    category: "chicken",
+    menuName: "sea chicken momo",
+    price: 250,
+  },
+  {
+    image: chillyMomo,
+    category: "chicken",
+    menuName: "chilly chicken momo",
+    price: 190,
+  },
+  {
+    image: buffMomo,
+    menuName: "fry veg momo",
+    category: "veg",
+    price: 150,
+  },
+  {
+    image: seaMomo,
+    category: "veg",
+    menuName: "sea veg momo",
+    price: 250,
+  },
+  {
+    image: chillyMomo,
+    category: "veg",
+    menuName: "chilly veg momo",
+    price: 20000,
+  },
 ];
 
 const MostPopularMenu = () => {
   const [filterCategory, setFilterCategory] = useState("buff");
+  const [startIndex, setStartIndex] = useState(0);
 
   const navigate = useNavigate();
 
@@ -78,37 +127,28 @@ const MostPopularMenu = () => {
     setFilterCategory(category);
   };
 
+  const itemsPerPage = 3;
+
   const filterData = momoTypeLists.filter(
     (item) => item.category === filterCategory,
   );
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    initialSlide: 3,
-    adaptiveHeight: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+  const handlePrevious = () => {
+    setStartIndex(
+      (prev) => (prev - itemsPerPage + filterData.length) % filterData.length,
+    );
+  };
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev + itemsPerPage) % filterData.length);
+  };
+
+  const getDisplayedItems = () => {
+    let displayedItems = [];
+    for (let i = 0; i < itemsPerPage; i++) {
+      displayedItems.push(filterData[(startIndex + i) % filterData.length]);
+    }
+    return displayedItems;
   };
 
   return (
@@ -140,18 +180,33 @@ const MostPopularMenu = () => {
             isActive={filterCategory === "veg"}
           />
         </div>
-        {/* <div className="flex justify-center gap-8 lg:gap-12 xl:gap-32 items-center pt-6"> */}
-        <Slider {...settings}>
-          {filterData.map((item, index) => (
-            <MomoMenu
+
+        <div
+          className={`relative my-6 flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-8 xl:gap-12`}
+        >
+          {getDisplayedItems()?.map((item, index) => (
+            <MomoMenuList
               key={index}
               menuImg={item.image}
               menuName={item.menuName}
               menuPrice={item.price}
             />
           ))}
-        </Slider>
-        {/* </div> */}
+          <div className="absolute top-1/3 flex w-full justify-between">
+            <span
+              onClick={handlePrevious}
+              className="left-icons flex h-6 w-6 items-center justify-center rounded-full border border-solid border-black-light hover:border-black hover:bg-white-light lg:h-8 lg:w-8"
+            >
+              <FaArrowLeft size={8} />
+            </span>
+            <span
+              onClick={handleNext}
+              className="right-icons flex h-6 w-6 items-center justify-center rounded-full border border-solid border-black-light hover:border-black hover:bg-white-light lg:h-8 lg:w-8"
+            >
+              <FaArrowRight size={8} />
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="my-12 flex justify-center">

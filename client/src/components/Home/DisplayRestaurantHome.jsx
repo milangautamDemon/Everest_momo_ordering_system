@@ -39,8 +39,6 @@ const DisplayRestaurantHome = () => {
       </div>
       <div className="end-0 rounded-full md:absolute md:h-80 md:w-80 md:translate-x-2/4 md:bg-primary lg:h-[32rem] lg:w-[32rem] lg:translate-x-3/4">
         <div className="md:absolute md:-start-20 md:top-28 lg:-start-40 lg:top-40">
-          {/* <div className=""></div>
-                <div className=""></div> */}
           <img
             src={displayMomo}
             alt=""

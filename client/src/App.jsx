@@ -14,7 +14,7 @@ import AdminMenu from "./pages/admin/AdminMenu";
 import AdminContactUs from "./pages/admin/AdminContactUs";
 import AdminServices from "./pages/admin/AdminServices";
 import AdminLayout from "./components/layout/AdminLayout";
-import AdminRoute from "../routes/AdminRoute";
+import AdminRoute from "./middlewares/AdminRoute";
 import Login from "./pages/admin/Login";
 
 function App() {

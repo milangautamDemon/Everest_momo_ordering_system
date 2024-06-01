@@ -1,42 +1,43 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import PrimaryButton from "./common/PrimaryButton";
-import CommonIcon from "./common/Icon";
-import { FaFacebookF } from "react-icons/fa6";
-import { FaTiktok } from "react-icons/fa";
-import { IoLogoInstagram } from "react-icons/io";
-import Logo from "./common/Logo";
+import { NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
+import Logo from "../../../components/common/Logo";
+import PrimaryButton from "../../../components/common/PrimaryButton";
 
-const Navbar = () => {
+const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleToggle = () => setIsMenuOpen(!isMenuOpen);
   const handleMenuClose = () => setIsMenuOpen(false);
 
-  const handleContactButton = () => navigate("/contact");
-
   return (
     <nav className="sticky top-0 z-50 border-b-2 border-solid border-white-light bg-white-default px-8 py-2 md:px-16 xl:px-32">
       <div className="relative flex items-center justify-between">
-        <div className="flex items-center">
-          <Logo navigate="/" />
+        <div className="flex items-center gap-2">
+          <Logo navigate="/admin" />
+          <div className="font-allura text-lg font-bold text-primary">
+            Admin Dashboard
+          </div>
         </div>
 
         <div
-          className={`absolute top-14 w-full lg:relative lg:top-0 lg:flex lg:w-auto lg:items-center ${isMenuOpen ? "block" : "hidden"}`}
+          className={`absolute right-0 top-14 flex w-auto flex-col items-center gap-4 bg-black px-4 py-4 lg:relative lg:top-0 lg:w-auto lg:flex-row lg:items-center lg:bg-white-default ${isMenuOpen ? "block" : "hidden"} lg:flex lg:gap-16 lg:py-0`}
         >
-          <ul className="lg:bg-white flex w-full flex-col items-center justify-center gap-2 bg-black-dark py-6 font-hachi text-black-light lg:flex-row lg:bg-white-default lg:py-0 lg:font-poppins lg:text-black-dark xl:gap-6">
+          <div className="w-full text-center font-chela text-lg capitalize text-white-default lg:hidden">
+            add/update
+          </div>
+          <ul className="lg:bg-white flex w-auto flex-col items-center justify-center gap-2 font-nova text-black-light lg:flex-row lg:bg-white-default lg:py-0 lg:font-poppins lg:text-black-dark xl:gap-6">
             <li>
               <NavLink
                 onClick={handleMenuClose}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-lg font-bold capitalize text-danger lg:text-sm lg:font-light"
+                    ? "text-lg font-bold capitalize text-danger-light lg:text-sm lg:font-light"
                     : "text-lg font-bold capitalize hover:text-secondary lg:text-sm lg:font-light"
                 }
-                to="/aboutus"
+                to="/admin/aboutus"
               >
                 about us
               </NavLink>
@@ -49,7 +50,7 @@ const Navbar = () => {
                     ? "text-lg font-bold capitalize text-danger-light lg:text-sm lg:font-light"
                     : "text-lg font-bold capitalize hover:text-secondary lg:text-sm lg:font-light"
                 }
-                to="/menu"
+                to="/admin/menu"
               >
                 our menu
               </NavLink>
@@ -59,10 +60,10 @@ const Navbar = () => {
                 onClick={handleMenuClose}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-lg font-bold capitalize text-danger lg:text-sm lg:font-light"
+                    ? "text-lg font-bold capitalize text-danger-light lg:text-sm lg:font-light"
                     : "text-lg font-bold capitalize hover:text-secondary lg:text-sm lg:font-light"
                 }
-                to="/services"
+                to="/admin/services"
               >
                 our services
               </NavLink>
@@ -72,31 +73,25 @@ const Navbar = () => {
                 onClick={handleMenuClose}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-lg font-bold capitalize text-danger lg:text-sm lg:font-light"
+                    ? "text-lg font-bold capitalize text-danger-light lg:text-sm lg:font-light"
                     : "text-lg font-bold capitalize hover:text-secondary lg:text-sm lg:font-light"
                 }
-                to="/advice"
+                to="/admin/advice"
               >
                 allergy advice
               </NavLink>
             </li>
           </ul>
-        </div>
 
-        <div className="hidden items-center justify-end gap-8 lg:flex">
-          <div className="flex gap-4">
-            <CommonIcon iconName={FaFacebookF} />
-            <CommonIcon iconName={FaTiktok} />
-            <CommonIcon iconName={IoLogoInstagram} />
-          </div>
-          <div>
+          <div className="items-center justify-end gap-8 lg:flex">
             <PrimaryButton
-              buttonName="contact us"
-              onClick={handleContactButton}
-              classFeature="bg-primary px-7 hover:bg-primary-dark"
+              onClick={logout}
+              buttonName="Logout"
+              classFeature="px-8 bg-secondary font-semibold hover:bg-secondary-dark shadow-lg"
             />
           </div>
         </div>
+
         <div className="hamburgar-menu lg:hidden" onClick={handleToggle}>
           <RxHamburgerMenu size={40} aria-label="Open Menu" />
         </div>
@@ -105,4 +100,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AdminNavbar;

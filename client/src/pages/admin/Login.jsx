@@ -24,14 +24,14 @@ function Login() {
           <div className="border-b-2 border-black-light"></div>
         </div>
         <Input
-          inputchangeHandler={(e) => setUserName(e.target.value)}
+          onChange={(e) => setUserName(e.target.value)}
           inputValue={userName}
           type={true}
           label={"UserName"}
         />
         <div className="flex flex-col gap-1">
           <Input
-            inputchangeHandler={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             inputValue={password}
             type={false}
             label={"Password"}
