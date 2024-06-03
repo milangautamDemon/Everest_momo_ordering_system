@@ -1,103 +1,23 @@
 import PageDescription from "../components/common/PageDescription";
 import MomoMenuList from "../components/common/MomoMenuList";
-import buffSteamMomo from "../assets/images/sea-momo.png";
-
 import QrScanner from "../components/common/QrScanner";
 import UniqueTitle from "../components/common/UniqueTitle";
-
-const menuItems = [
-  {
-    category: "buff",
-    menuImg: buffSteamMomo,
-    menuName: "buff Steam Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "buff",
-    menuImg: buffSteamMomo,
-    menuName: "buff fry Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "buff",
-    menuImg: buffSteamMomo,
-    menuName: "buff chilly Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "chicken",
-    menuImg: buffSteamMomo,
-    menuName: "chicken Steam Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "chicken",
-    menuImg: buffSteamMomo,
-    menuName: "chicken fry Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "chicken",
-    menuImg: buffSteamMomo,
-    menuName: "chicken chilly Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "veg",
-    menuImg: buffSteamMomo,
-    menuName: "veg Steam Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "veg",
-    menuImg: buffSteamMomo,
-    menuName: "veg fry Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-  {
-    category: "veg",
-    menuImg: buffSteamMomo,
-    menuName: "veg chilly Momo",
-    itemDescription:
-      "Freshly Stream Buff Momos made from whole wheat and kneaded with beta Carotena Rich Vegetable Juice",
-    menuPrice: "200",
-  },
-];
-
-const groupItemsByCategory = (items) => {
-  return items.reduce((accumulator, currentItem) => {
-    if (accumulator[currentItem.category]) {
-      accumulator[currentItem.category].push(currentItem);
-    } else {
-      accumulator[currentItem.category] = [currentItem];
-    }
-    return accumulator;
-  }, {});
-};
+import { useContext } from "react";
+import menuContext from "../contexts/menuContext";
+import groupItemsByCategory from "../middlewares/groupItemByCategory";
 
 const Menu = () => {
-  const groupedItems = groupItemsByCategory(menuItems);
+  const { menuData, loading } = useContext(menuContext);
+  const groupedItems = groupItemsByCategory(menuData);
 
   const mappedItems = Object.entries(groupedItems).map(([category, items]) => ({
     category,
     items,
   }));
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="mx-8 md:mx-16 xl:mx-32">
@@ -119,10 +39,10 @@ const Menu = () => {
               {items.map((item, index) => (
                 <MomoMenuList
                   key={index}
-                  menuImg={item.menuImg}
-                  menuName={item.menuName}
-                  menuPrice={item.menuPrice}
-                  itemDescription={item.itemDescription}
+                  menuImg={`http://localhost:3000/${item.image}`}
+                  menuName={item.name}
+                  menuPrice={item.price}
+                  itemDescription={item.description}
                 />
               ))}
             </div>

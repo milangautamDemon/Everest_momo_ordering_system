@@ -1,120 +1,15 @@
 import SimpleBtn from "../common/SimpleBtn";
-import buffMomo from "../../assets/images/fry-momo.png";
-import seaMomo from "../../assets/images/sea-momo.png";
-import chillyMomo from "../../assets/images/chilly-momo.png";
 import { useNavigate } from "react-router-dom";
 import { TiArrowRight } from "react-icons/ti";
 import SecondaryButton from "../common/SecondaryButton";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MomoMenuList from "../common/MomoMenuList";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
-const momoTypeLists = [
-  {
-    image: buffMomo,
-    menuName: "fry buff momo",
-    category: "buff",
-    price: 150,
-  },
-  {
-    image: seaMomo,
-    category: "buff",
-    menuName: "sea buff momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "buff",
-    menuName: "chilly buff momo",
-    price: 190,
-  },
-  {
-    image: buffMomo,
-    menuName: "fry chicken momo",
-    category: "chicken",
-    price: 150,
-  },
-  {
-    image: seaMomo,
-    category: "chicken",
-    menuName: "sea chicken momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "chicken",
-    menuName: "chilly chicken momo",
-    price: 190,
-  },
-  {
-    image: buffMomo,
-    menuName: "fry veg momo",
-    category: "veg",
-    price: 150,
-  },
-  {
-    image: seaMomo,
-    category: "veg",
-    menuName: "sea veg momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "veg",
-    menuName: "chilly veg momo",
-    price: 190,
-  },
-  {
-    image: seaMomo,
-    category: "buff",
-    menuName: "sea buff momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "buff",
-    menuName: "chilly buff momo",
-    price: 190,
-  },
-  {
-    image: buffMomo,
-    menuName: "fry chicken momo",
-    category: "chicken",
-    price: 150,
-  },
-  {
-    image: seaMomo,
-    category: "chicken",
-    menuName: "sea chicken momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "chicken",
-    menuName: "chilly chicken momo",
-    price: 190,
-  },
-  {
-    image: buffMomo,
-    menuName: "fry veg momo",
-    category: "veg",
-    price: 150,
-  },
-  {
-    image: seaMomo,
-    category: "veg",
-    menuName: "sea veg momo",
-    price: 250,
-  },
-  {
-    image: chillyMomo,
-    category: "veg",
-    menuName: "chilly veg momo",
-    price: 20000,
-  },
-];
+import menuContext from "../../contexts/menuContext";
 
 const MostPopularMenu = () => {
+  const { menuData, loading } = useContext(menuContext);
+
   const [filterCategory, setFilterCategory] = useState("buff");
   const [startIndex, setStartIndex] = useState(0);
 
@@ -123,14 +18,15 @@ const MostPopularMenu = () => {
   const handleMenuButton = () => navigate("/menu");
   const handleCategory = (category) => {
     setFilterCategory(category);
+    setStartIndex(0);
   };
 
   const itemsPerPage = 3;
 
-  const filterData = momoTypeLists.filter(
+  const filterData = menuData.filter(
     (item) => item.category === filterCategory,
   );
-
+  console.log(filterData);
   const handlePrevious = () => {
     setStartIndex(
       (prev) => (prev - itemsPerPage + filterData.length) % filterData.length,
@@ -148,6 +44,11 @@ const MostPopularMenu = () => {
     }
     return displayedItems;
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  console.log(getDisplayedItems());
 
   return (
     <div className="my-4 flex flex-col md:gap-4">
@@ -185,9 +86,9 @@ const MostPopularMenu = () => {
           {getDisplayedItems()?.map((item, index) => (
             <MomoMenuList
               key={index}
-              menuImg={item.image}
-              menuName={item.menuName}
-              menuPrice={item.price}
+              menuImg={item ? `http://localhost:3000/${item.image}` : ""}
+              menuName={item ? item.name : ""}
+              menuPrice={item ? item.price : ""}
             />
           ))}
           <div className="absolute top-1/3 flex w-full justify-between">

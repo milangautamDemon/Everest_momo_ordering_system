@@ -1,31 +1,101 @@
 import { useState } from "react";
 import Input from "../../components/common/Input";
 import PrimaryButton from "../../components/common/PrimaryButton";
-import MomoMenuList from "../../components/common/MomoMenuList";
+import axios from "axios";
+import toast from "react-hot-toast";
+import MenuListsMapping from "./components/MenuListsMapping";
 
 const AdminMenu = () => {
   const [form, setForm] = useState({
-    image: "",
     name: "",
     price: "",
     category: "",
     description: "",
   });
+  const [image, setImage] = useState();
   const [data, setData] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prevForm) => ({
-      ...prevForm,
-      [name]: value,
-    }));
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      // Ensure `files` is not empty before accessing files[0]
+      if (files && files.length > 0) {
+        console.log("inside", files[0]);
+        setImage(files[0]);
+      } else {
+        console.log("error data");
+        // Handle case where no file is selected (optional)
+        setImage(null); // Or some default value
+      }
+    } else {
+      setForm((prevForm) => ({
+        ...prevForm,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleForm = (e) => {
+  //form validation
+  const formValidate = () => {
+    const newErrors = {};
+
+    const trimName = form.name.trim();
+    const trimPrice = form.price.trim();
+    const trimCategory = form.category.trim();
+    const trimDescription = form.description.trim();
+    const parsedPrice = parseInt(trimPrice, 10);
+
+    if (!trimName) newErrors.name = "Menu Name is Required !!!";
+    if (!trimPrice) newErrors.price = "Menu Price is Required !!!";
+    if (!trimCategory) newErrors.category = "Menu Category is Required !!!";
+    if (!trimDescription)
+      newErrors.description = "Menu Description is Required !!!";
+    if (!image) newErrors.image = "Image is Required !!!";
+    if (isNaN(parsedPrice) || parsedPrice < 150 || parsedPrice > 1000)
+      newErrors.price =
+        "Price Should be number & minimum 150 & maximum 1000 !!!";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleForm = async (e) => {
     e.preventDefault();
-    setData((prevData) => [form, ...prevData]);
+    if (formValidate()) {
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("name", form.name);
+      formData.append("price", form.price);
+      formData.append("category", form.category);
+      formData.append("description", form.description);
+
+      // console.log(formData);
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/admin/add-menu",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          },
+        );
+        toast.success(response.data.msg);
+      } catch (error) {
+        console.error("Error response:", error.response); // Log the full error response
+        toast.error(error.response.data.err_code, { position: "top-right" });
+      }
+      setData((prevData) => [form, ...prevData]);
+    } else {
+      console.error("validation failed !!!");
+      toast.error(`Form Validation Failed !!!`, {
+        position: "top-left",
+      });
+    }
+    setImage();
     setForm({
-      image: "",
       name: "",
       price: "",
       category: "",
@@ -39,27 +109,34 @@ const AdminMenu = () => {
         <div className="text-center text-xl font-semibold uppercase text-black">
           add/update Menu
         </div>
-        <form className="flex flex-col gap-6" onSubmit={handleForm}>
+        <form
+          method="post"
+          encType="multipart/form-data"
+          className="flex flex-col gap-6"
+        >
           <div className="">
             <label
               htmlFor="image"
-              className="font-oswald font-semibold text-primary"
+              className="font-oswald font-semibold text-secondary"
             >
               Image
             </label>
             <Input
               name="image"
               id="image"
-              inputValue={form.image}
               onChange={handleChange}
               type="file"
+              required
             />
+            {errors.image && (
+              <span className="text-xs text-danger-light">{errors.image}</span>
+            )}
           </div>
 
           <div className="">
             <label
               htmlFor="name"
-              className="font-oswald font-semibold text-primary"
+              className="font-oswald font-semibold text-secondary"
             >
               Name
             </label>
@@ -69,13 +146,17 @@ const AdminMenu = () => {
               inputValue={form.name}
               onChange={handleChange}
               type="text"
+              required
             />
+            {errors.name && (
+              <span className="text-xs text-danger-light">{errors.name}</span>
+            )}
           </div>
 
           <div className="">
             <label
               htmlFor="price"
-              className="font-oswald font-semibold text-primary"
+              className="font-oswald font-semibold text-secondary"
             >
               Price
             </label>
@@ -85,13 +166,17 @@ const AdminMenu = () => {
               inputValue={form.price}
               onChange={handleChange}
               type="number"
+              required
             />
+            {errors.price && (
+              <span className="text-xs text-danger-light">{errors.price}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-2">
             <label
               htmlFor="category"
-              className="font-oswald font-semibold text-primary"
+              className="font-oswald font-semibold text-secondary"
             >
               Category
             </label>
@@ -101,18 +186,24 @@ const AdminMenu = () => {
               value={form.category}
               onChange={handleChange}
               className="w-full rounded-lg border border-black-light px-4 py-3 text-lg"
+              required
             >
               <option value="">choose</option>
               <option value="chicken">Chicken</option>
               <option value="buff">Buff</option>
               <option value="veg">Veg</option>
             </select>
+            {errors.category && (
+              <span className="text-xs text-danger-light">
+                {errors.category}
+              </span>
+            )}
           </div>
 
           <div className="">
             <label
               htmlFor="description"
-              className="font-oswald font-semibold text-primary"
+              className="font-oswald font-semibold text-secondary"
             >
               Description
             </label>
@@ -122,11 +213,18 @@ const AdminMenu = () => {
               inputValue={form.description}
               onChange={handleChange}
               type="text"
+              required
             />
+            {errors.description && (
+              <span className="text-xs text-danger-light">
+                {errors.description}
+              </span>
+            )}
           </div>
 
           <div className="flex w-full justify-center">
             <PrimaryButton
+              onClick={handleForm}
               type="submit"
               buttonName="Add Menu"
               classFeature="bg-black px-8 font-semibold hover:bg-black-dark"
@@ -135,33 +233,7 @@ const AdminMenu = () => {
         </form>
       </div>
 
-      <div className="flex w-full flex-col gap-6 border-t-2 border-black-light/50 py-8">
-        <div className="text-center text-xl font-bold capitalize text-black">
-          momo menu lists
-        </div>
-        <ul className="grid grid-cols-1 justify-between gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((item, index) => (
-            <li
-              className="flex flex-col items-center rounded-md bg-white-light px-2 py-4 shadow-lg"
-              key={index}
-            >
-              <div className="py-1 text-center font-allura text-xl font-bold text-primary-light">
-                {item.category}
-              </div>
-              <MomoMenuList
-                menuImg={item.image}
-                menuName={item.name}
-                menuPrice={item.price}
-                itemDescription={item.description}
-              />
-              <PrimaryButton
-                buttonName="delete"
-                classFeature="px-6 bg-danger text-white-default hover:bg-danger-dark text-sm shadow-lg"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <MenuListsMapping data={data} />
     </div>
   );
 };
