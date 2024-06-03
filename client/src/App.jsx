@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Layout from "./components/layout/Layout";
@@ -16,6 +16,7 @@ import AdminServices from "./pages/admin/AdminServices";
 import AdminLayout from "./components/layout/AdminLayout";
 import AdminRoute from "./middlewares/AdminRoute";
 import Login from "./pages/admin/Login";
+import EditMenu from "./pages/admin/components/EditMenu";
 
 function App() {
   // Define the routes using createBrowserRouter
@@ -76,7 +77,19 @@ function App() {
             },
             {
               path: "menu",
-              element: <AdminMenu />,
+              element: <Outlet />, // Outlet renders nested routes
+              children: [
+                {
+                  // Render AdminMenu component for /admin/menu
+                  // and all its nested routes
+                  index: true,
+                  element: <AdminMenu />,
+                },
+                {
+                  path: "edit",
+                  element: <EditMenu />,
+                },
+              ],
             },
             {
               path: "contact",

@@ -4,12 +4,15 @@ import App from "./App.jsx";
 import "./index.css";
 import ErrorBoundary from "./error/ErrorBoundary.jsx";
 import MenuProvider from "./providers/MenuProvider.jsx";
+import FormProvider from "./providers/FormProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ErrorBoundary>
       <MenuProvider>
-        <App />
+        <FormProvider>
+          <App />
+        </FormProvider>
       </MenuProvider>
     </ErrorBoundary>
   </React.StrictMode>,

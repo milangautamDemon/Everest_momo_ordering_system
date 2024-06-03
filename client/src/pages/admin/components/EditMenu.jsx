@@ -1,15 +1,16 @@
-import axios from "axios";
-import toast from "react-hot-toast";
-import MenuListsMapping from "./components/MenuListsMapping";
-import MenuForm from "./components/common/MenuForm";
 import { useContext } from "react";
-import formContext from "../../contexts/formContext";
+import MenuForm from "./common/MenuForm";
+import formContext from "../../../contexts/formContext";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const AdminMenu = () => {
+const EditMenu = () => {
   const { form, setForm, image, setImage, errors, formValidate } =
     useContext(formContext);
+  const { id } = useParams();
 
-  const handleAddMenuForm = async (e) => {
+  const handleEditMenuForm = async (e) => {
     e.preventDefault();
     if (formValidate()) {
       const formData = new FormData();
@@ -18,11 +19,9 @@ const AdminMenu = () => {
       formData.append("price", form.price);
       formData.append("category", form.category);
       formData.append("description", form.description);
-
-      // console.log(formData);
       try {
-        const response = await axios.post(
-          "http://localhost:3000/api/admin/add-menu",
+        const response = await axios.put(
+          `http://localhost:3000/api/admin/edit-menu/${id}`,
           formData,
           {
             headers: {
@@ -36,12 +35,12 @@ const AdminMenu = () => {
         toast.error(error.response.data.err_code, { position: "top-right" });
       }
     } else {
-      console.error("validation failed !!!");
-      toast.error(`Form Validation Failed !!!`, {
+      console.error("Validation failed !!!");
+      toast.error("Form Validation Failed !!!", {
         position: "top-left",
       });
     }
-    setImage();
+    setImage(null);
     setForm({
       name: "",
       price: "",
@@ -51,19 +50,18 @@ const AdminMenu = () => {
   };
 
   return (
-    <div className="mx-8 my-10 flex flex-col items-center gap-10 bg-white-default md:mx-14 lg:mx-28">
+    <div>
       <MenuForm
         errors={errors}
         setImage={setImage}
         form={form}
         setForm={setForm}
-        buttonName="add menu"
-        formName="add menu"
-        onClick={handleAddMenuForm}
+        buttonName="edit menu"
+        formName="edit menu"
+        onClick={handleEditMenuForm}
       />
-      <MenuListsMapping />
     </div>
   );
 };
 
-export default AdminMenu;
+export default EditMenu;

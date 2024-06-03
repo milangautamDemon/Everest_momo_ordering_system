@@ -4,9 +4,15 @@ import PrimaryButton from "../../../components/common/PrimaryButton";
 import MomoMenuList from "../../../components/common/MomoMenuList";
 import { useContext } from "react";
 import menuContext from "../../../contexts/menuContext";
+import { useNavigate } from "react-router-dom";
 
 const MenuListsMapping = () => {
   const { menuData, loading } = useContext(menuContext);
+  const navigate = useNavigate();
+
+  const handleEditMenuPage = () => navigate(`/admin/menu/edit`);
+
+  const handleMenuDelete = () => {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,10 +40,12 @@ const MenuListsMapping = () => {
             />
             <div className="flex gap-2">
               <PrimaryButton
+                onClick={handleEditMenuPage}
                 buttonName="edit"
                 classFeature="px-6 bg-secondary text-white-default hover:bg-secondary-dark text-sm shadow-lg sm:rounded-md"
               />
               <PrimaryButton
+                onClick={handleMenuDelete}
                 buttonName="delete"
                 classFeature="px-4 bg-danger text-white-default hover:bg-danger-dark text-sm shadow-lg sm:rounded-md"
               />
