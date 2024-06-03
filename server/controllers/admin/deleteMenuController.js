@@ -33,7 +33,7 @@ router.delete("/:id", async (req, res) => {
     // Delete the menu item
     await Menu.findByIdAndDelete(id);
 
-    const filePath = `./uploads/${menuItem.image}`;
+    const filePath = `./${menuItem.image}`;
 
     try {
       fs.unlinkSync(path.resolve(filePath));
