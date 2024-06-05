@@ -10,6 +10,8 @@ const MenuForm = ({
   setForm,
   buttonName,
   formName,
+  setPreviewUrl,
+  previewUrl,
   ...handleButton
 }) => {
   const handleChange = (e) => {
@@ -19,10 +21,12 @@ const MenuForm = ({
       if (files && files.length > 0) {
         console.log("inside", files[0]);
         setImage(files[0]);
+        setPreviewUrl(URL.createObjectURL(files[0]));
       } else {
         console.log("error data");
         // Handle case where no file is selected (optional)
         setImage(null); // Or some default value
+        setPreviewUrl("");
       }
     } else {
       setForm((prevForm) => ({
@@ -43,19 +47,28 @@ const MenuForm = ({
         className="flex flex-col gap-6"
       >
         <div className="">
+          {previewUrl && (
+            <div className="flex justify-center">
+              <img src={previewUrl} alt="Preview" className="h-16 w-20" />
+            </div>
+          )}
           <label
             htmlFor="image"
             className="font-oswald font-semibold text-secondary"
           >
             Image
           </label>
-          <Input
-            name="image"
-            id="image"
-            onChange={handleChange}
-            type="file"
-            required
-          />
+
+          {
+            <Input
+              name="image"
+              accept="image/*"
+              id="image"
+              onChange={handleChange}
+              type="file"
+              required
+            />
+          }
           {errors.image && (
             <span className="text-xs text-danger-light">{errors.image}</span>
           )}

@@ -41,7 +41,7 @@ const AdminMenu = () => {
         position: "top-left",
       });
     }
-    setImage();
+    setImage(null);
     setForm({
       name: "",
       price: "",

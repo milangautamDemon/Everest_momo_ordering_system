@@ -57,7 +57,7 @@ function App() {
     },
     {
       path: "admin",
-      element: <AdminRoute />, // Use AdminRoute here
+      element: <AdminRoute />,
       children: [
         {
           path: "",
@@ -80,13 +80,11 @@ function App() {
               element: <Outlet />, // Outlet renders nested routes
               children: [
                 {
-                  // Render AdminMenu component for /admin/menu
-                  // and all its nested routes
                   index: true,
                   element: <AdminMenu />,
                 },
                 {
-                  path: "edit",
+                  path: "edit/:id",
                   element: <EditMenu />,
                 },
               ],

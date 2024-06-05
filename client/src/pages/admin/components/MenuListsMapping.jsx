@@ -10,7 +10,7 @@ const MenuListsMapping = () => {
   const { menuData, loading } = useContext(menuContext);
   const navigate = useNavigate();
 
-  const handleEditMenuPage = () => navigate(`/admin/menu/edit`);
+  const handleEditMenuPage = (id) => navigate(`/admin/menu/edit/${id}`);
 
   const handleMenuDelete = () => {};
 
@@ -23,10 +23,10 @@ const MenuListsMapping = () => {
         momo menu lists
       </div>
       <ul className="grid grid-cols-1 justify-between gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {menuData.map((item, index) => (
+        {menuData.map((item) => (
           <li
             className="flex flex-col items-center rounded-md bg-white-light px-2 py-4 shadow-lg"
-            key={index}
+            key={item._id}
           >
             <div className="py-1 text-center font-allura text-xl font-bold text-primary-light">
               {item.category}
@@ -40,7 +40,7 @@ const MenuListsMapping = () => {
             />
             <div className="flex gap-2">
               <PrimaryButton
-                onClick={handleEditMenuPage}
+                onClick={() => handleEditMenuPage(item._id)}
                 buttonName="edit"
                 classFeature="px-6 bg-secondary text-white-default hover:bg-secondary-dark text-sm shadow-lg sm:rounded-md"
               />

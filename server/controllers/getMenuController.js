@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     //find the all menu data from database
     const menuDatas = await Menu.find({});
-    console.log(menuDatas);
+    // console.log(menuDatas);
 
     //if any data not exists
     if (!menuDatas) {

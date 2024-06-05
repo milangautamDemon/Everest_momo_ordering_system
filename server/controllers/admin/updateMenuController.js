@@ -20,7 +20,8 @@ router.put("/:id", upload.single("image"), async (req, res) => {
     }
 
     //receive id from params from the request
-    const { id } = req.params.id;
+    const id = req.params.id;
+    console.log(id);
 
     //receive menu data from request
     const { category, name, description, price } = req.body;
@@ -58,45 +59,43 @@ router.put("/:id", upload.single("image"), async (req, res) => {
       });
     }
 
-    const filePath = isExists.image; // Assuming 'image' field contains the file path
+    let imageData = isExists.image; // Use existing image by default
 
-    if (filePath) {
-      fs.unlink(path.resolve(filePath), (err) => {
-        if (err) {
-          console.error("Error deleting file:", err);
-          return;
-        }
+    if (req.file) {
+      imageData = req.file.path;
 
-        console.log("File deleted successfully:", filePath);
-      });
-    } else {
-      console.log("No file path found in the document");
-    }
-
-    const imageData = req.file.path; // Contains information about the uploaded file
-
-    //if image not exist throw error message
-    if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        err_code: "IMAGE_IS_REQUIRED",
-        message: "Image is required",
-      });
+      // Delete the previous image if it exists
+      if (isExists.image) {
+        fs.unlink(path.resolve(isExists.image), (err) => {
+          if (err) {
+            console.error("Error deleting file:", err);
+          } else {
+            console.log("File deleted successfully:", isExists.image);
+          }
+        });
+      }
     }
 
     //if exists then delete and update
-    await Menu.findByIdAndUpdate({
-      category,
-      image: imageData,
-      name,
-      description,
-      price,
-    });
+    const updatedData = await Menu.findByIdAndUpdate(
+      id,
+      { category, image: imageData, name, description, price },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedData) {
+      return res.status(404).send({
+        success: false,
+        err_code: "MENU_ITEM_NOT_FOUND",
+        msg: "Menu item not found",
+      });
+    }
 
     //success message
     res.status(200).send({
       success: true,
-      msg: "Data Deleted Successfully !",
+      msg: "Data Updated Successfully !",
+      data: updatedData,
     });
   } catch (error) {
     console.error("Error:", error);

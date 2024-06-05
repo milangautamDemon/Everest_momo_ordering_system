@@ -27,7 +27,6 @@ const FormProvider = ({ children }) => {
     if (!trimCategory) newErrors.category = "Menu Category is Required !!!";
     if (!trimDescription)
       newErrors.description = "Menu Description is Required !!!";
-    if (!image) newErrors.image = "Image is Required !!!";
     if (isNaN(parsedPrice) || parsedPrice < 150 || parsedPrice > 1000)
       newErrors.price =
         "Price Should be number & minimum 150 & maximum 1000 !!!";
