@@ -31,6 +31,10 @@ const AdminMenu = () => {
           },
         );
         toast.success(response.data.msg);
+        setForm((prev) => ({
+          ...prev,
+          form,
+        }));
       } catch (error) {
         console.error("Error response:", error.response); // Log the full error response
         toast.error(error.response.data.err_code, { position: "top-right" });

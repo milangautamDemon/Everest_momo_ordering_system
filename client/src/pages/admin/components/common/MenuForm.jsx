@@ -21,12 +21,16 @@ const MenuForm = ({
       if (files && files.length > 0) {
         console.log("inside", files[0]);
         setImage(files[0]);
-        setPreviewUrl(URL.createObjectURL(files[0]));
+        if (previewUrl) {
+          setPreviewUrl(URL.createObjectURL(files[0]));
+        }
       } else {
         console.log("error data");
         // Handle case where no file is selected (optional)
         setImage(null); // Or some default value
-        setPreviewUrl("");
+        if (previewUrl) {
+          setPreviewUrl("");
+        }
       }
     } else {
       setForm((prevForm) => ({

@@ -37,7 +37,7 @@ const MenuProvider = ({ children }) => {
     fetchUser();
   }, []);
   return (
-    <menuContext.Provider value={{ menuData, loading }}>
+    <menuContext.Provider value={{ menuData, loading, setMenuData }}>
       {children}
     </menuContext.Provider>
   );

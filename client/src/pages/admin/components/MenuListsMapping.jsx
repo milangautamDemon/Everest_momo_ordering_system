@@ -5,14 +5,25 @@ import MomoMenuList from "../../../components/common/MomoMenuList";
 import { useContext } from "react";
 import menuContext from "../../../contexts/menuContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const MenuListsMapping = () => {
-  const { menuData, loading } = useContext(menuContext);
+  const { menuData, loading, setMenuData } = useContext(menuContext);
   const navigate = useNavigate();
 
   const handleEditMenuPage = (id) => navigate(`/admin/menu/edit/${id}`);
 
-  const handleMenuDelete = () => {};
+  const handleMenuDelete = async (userId) => {
+    await axios
+      .delete(`http://localhost:3000/api/admin/delete-menu/${userId}`)
+      .then((response) => {
+        setMenuData((prevMenu) =>
+          prevMenu.filter((menuData) => menuData._id != userId),
+        );
+        toast.success(response.data.msg, { position: "top-right" });
+      });
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -45,7 +56,7 @@ const MenuListsMapping = () => {
                 classFeature="px-6 bg-secondary text-white-default hover:bg-secondary-dark text-sm shadow-lg sm:rounded-md"
               />
               <PrimaryButton
-                onClick={handleMenuDelete}
+                onClick={() => handleMenuDelete(item._id)}
                 buttonName="delete"
                 classFeature="px-4 bg-danger text-white-default hover:bg-danger-dark text-sm shadow-lg sm:rounded-md"
               />
