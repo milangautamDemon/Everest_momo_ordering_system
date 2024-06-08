@@ -19,7 +19,7 @@ const CustomerTalk = () => {
           },
         );
         const jsonData = await response.json();
-        setUserData(jsonData); // Assuming the endpoint returns an array of customer talks
+        setUserData(jsonData.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,13 +36,37 @@ const CustomerTalk = () => {
     setForm((form + 1) % userData.length);
   };
 
+  //------------------------------------------------------------------------
+  // console.log(userData);
+  // const handlePrevious = () => {
+  //   setForm((prevForm) => {
+  //     if (prevForm === 0) {
+  //       return userData.length - 1; // Go to last element on previous click
+  //     } else {
+  //       return prevForm - 1;
+  //     }
+  //   });
+  // };
+
+  // const handleNext = () => {
+  //   setForm((prevForm) => {
+  //     if (prevForm === userData.length - 1) {
+  //       return 0; // Go to first element on next click
+  //     } else {
+  //       return prevForm + 1;
+  //     }
+  //   });
+  // };
+  //--------------------------------------------------------------------------
+
+  // console.log(form);
   return (
     <div className="mx-8 md:mx-16 xl:mx-32">
-      {userData.map((data, index) => {
+      {userData?.map((data, index) => {
         return (
           <div
             key={index}
-            className={`${form === index ? "flex" : "hidden"} flex-col-reverse items-center gap-4 md:flex-row md:justify-between`}
+            className={`${index == form ? "flex" : "hidden"} flex-col-reverse items-center gap-4 md:flex-row md:justify-between`}
           >
             <div className="flex flex-col items-center gap-2 md:w-3/5 md:items-start">
               <div className="flex flex-col gap-4">
@@ -53,10 +77,10 @@ const CustomerTalk = () => {
                   What our customers say about us
                 </div>
                 <div className="text-center italic md:text-start">
-                  {data.customerPara}
+                  {data.words}
                 </div>
                 <div className="text-sm font-bold capitalize text-black-dark md:text-lg">
-                  {data.customerName}
+                  {data.name}
                 </div>
               </div>
               <div className="flex gap-2">
