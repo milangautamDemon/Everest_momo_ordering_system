@@ -17,6 +17,7 @@ import AdminLayout from "./components/layout/AdminLayout";
 import AdminRoute from "./middlewares/AdminRoute";
 import Login from "./pages/admin/Login";
 import EditMenu from "./pages/admin/components/EditMenu";
+import AddCustomerTalk from "./pages/admin/components/AddCustomerTalk";
 
 function App() {
   // Define the routes using createBrowserRouter
@@ -65,7 +66,17 @@ function App() {
           children: [
             {
               path: "",
-              element: <AdminHome />,
+              element: <Outlet />,
+              children: [
+                {
+                  path: "",
+                  element: <AdminHome />,
+                },
+                {
+                  path: "addCustomerTalk",
+                  element: <AddCustomerTalk />,
+                },
+              ],
             },
             {
               path: "aboutus",

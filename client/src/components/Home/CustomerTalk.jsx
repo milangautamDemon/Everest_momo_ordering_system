@@ -1,40 +1,39 @@
-import { useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import customerImg from "../../assets/images/customerImg.jpeg";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-
-const userData = [
-  {
-    customerPara:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, dicta! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita cumque eum incidunt sunt quas quae. Voluptas consequatur a quia officiis",
-    customerName: "livie dias",
-  },
-  {
-    customerPara:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, dicta! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita cumque eum incidunt sunt quas quae. Voluptas consequatur a quia officiis",
-    customerName: "ram yadav",
-  },
-  {
-    customerPara:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, dicta! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita cumque eum incidunt sunt quas quae. Voluptas consequatur a quia officiis",
-    customerName: "david gm",
-  },
-  {
-    customerPara:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, dicta! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita cumque eum incidunt sunt quas quae. Voluptas consequatur a quia officiis",
-    customerName: "sandeep pokhrel",
-  },
-];
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import talkContext from "../../contexts/talkContext";
 
 const CustomerTalk = () => {
-  const [userTalk, setUserTalk] = useState(0);
+  const { form, setForm } = useContext(talkContext);
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/get-customerTalks",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        const jsonData = await response.json();
+        setUserData(jsonData); // Assuming the endpoint returns an array of customer talks
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handlePrevious = () => {
-    setUserTalk((userTalk + userData.length - 1) % userData.length);
+    setForm((form + userData.length - 1) % userData.length);
   };
 
   const handleNext = () => {
-    setUserTalk((userTalk + 1) % userData.length);
+    setForm((form + 1) % userData.length);
   };
 
   return (
@@ -43,7 +42,7 @@ const CustomerTalk = () => {
         return (
           <div
             key={index}
-            className={`${userTalk === index ? "flex" : "hidden"} flex-col-reverse items-center gap-4 md:flex-row md:justify-between`}
+            className={`${form === index ? "flex" : "hidden"} flex-col-reverse items-center gap-4 md:flex-row md:justify-between`}
           >
             <div className="flex flex-col items-center gap-2 md:w-3/5 md:items-start">
               <div className="flex flex-col gap-4">
@@ -63,13 +62,13 @@ const CustomerTalk = () => {
               <div className="flex gap-2">
                 <span
                   onClick={handlePrevious}
-                  className="left-icons flex h-6 w-6 items-center justify-center rounded-full border border-solid border-black-light hover:border-black lg:h-8 lg:w-8"
+                  className="left-icons flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-solid border-black-light hover:border-black lg:h-8 lg:w-8"
                 >
                   <FaArrowLeft size={8} />
                 </span>
                 <span
                   onClick={handleNext}
-                  className="right-icons flex h-6 w-6 items-center justify-center rounded-full border border-solid border-black-light hover:border-black lg:h-8 lg:w-8"
+                  className="right-icons flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-solid border-black-light hover:border-black lg:h-8 lg:w-8"
                 >
                   <FaArrowRight size={8} />
                 </span>

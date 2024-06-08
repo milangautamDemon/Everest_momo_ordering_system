@@ -1,5 +1,5 @@
 const AdminHome = () => {
-  return <div>AdminHome</div>;
+  return <div className="">admin home</div>;
 };
 
 export default AdminHome;
