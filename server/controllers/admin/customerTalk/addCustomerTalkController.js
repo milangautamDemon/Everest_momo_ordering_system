@@ -1,15 +1,28 @@
 import express from "express";
 import Talk from "../../../models/talkModel.js";
+import upload from "../../../middlewares/menuImgUpload.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("image"), async (req, res) => {
   try {
     //receive data from the body
     const { name, words } = req.body;
 
+    const imageData = req.file.path; // Contains information about the uploaded file
+
+    console.log(imageData);
+    //if image not exist throw error message
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        err_code: "IMAGE_IS_REQUIRED",
+        message: "Image is required",
+      });
+    }
+
     //check where data is receive or not
-    if (!name || !words) {
+    if (!name && !words) {
       return res.status(400).send({
         success: false,
         err_code: "DATA_NOT_FOUND",
@@ -36,6 +49,7 @@ router.post("/", async (req, res) => {
     const newData = new Talk({
       name,
       words,
+      image: imageData,
     });
 
     //save data to the database

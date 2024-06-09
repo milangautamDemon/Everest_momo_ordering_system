@@ -39,7 +39,7 @@ const MenuForm = ({
       }));
     }
   };
-
+  console.log(form);
   return (
     <div className="flex w-full flex-col gap-10 sm:w-5/6 md:w-4/6 lg:w-3/6">
       <div className="text-center text-xl font-semibold uppercase text-black">

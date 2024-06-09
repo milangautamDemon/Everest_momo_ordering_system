@@ -9,6 +9,10 @@ const talkSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Talk = mongoose.model("Talk", talkSchema);
